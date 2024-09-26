@@ -18,7 +18,7 @@ public class Chapter01_2 {
      * jar.exe : 압축프로그램, 클래스파일과 프로그램의 실행에 관련된 파일을 하나의 jar파일(.jar)로 압축하거나 압축해제한다.
      * ※ JDK 와 JRE
      * JDK - 자바개발도구(Java Development Kit)
-     * JRE - 자바실행환경(Java Runtime Environment), 자바로 작성된 으용프로그램이 실행되기 위한 최소환경.
+     * JRE - 자바실행환경(Java Runtime Environment), 자바로 작성된 응용프로그램이 실행되기 위한 최소환경.
      * JDK = JRE + 개발에 필요한 실행파일(javac.exe 등)
      * JRE = JVM + 클래스라이브러리(Java API)
      */
