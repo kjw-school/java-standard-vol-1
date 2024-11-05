@@ -1,9 +1,9 @@
-package chapter03;
+package chapter02;
 
 /**
  * 3.1 10진법과 2진법
  */
-public class Chapter03_1 {
+public class Chapter02_3_1 {
 
     /**
      * 1946년에 개발된 컴퓨터인 애니악(ENIAC)은 사람에게 익숙한 10진법을 사용하도록 설계되었으나 전기회로는 전압이 불안정해서 전압을 10단계

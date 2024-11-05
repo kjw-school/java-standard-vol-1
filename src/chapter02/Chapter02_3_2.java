@@ -1,9 +1,9 @@
-package chapter03;
+package chapter02;
 
 /**
  * 3.2 비트(bit)와 바이트(byte)
  */
-public class Chapter03_2 {
+public class Chapter02_3_2 {
 
     /**
      * 한 자리의 2진수를 '비트(bit, binary digit)'라고 하며, 1 비트는 컴퓨터가 값을 저장할 수 있는 최소단위이다. 1비트 8개를 묶어서 '바

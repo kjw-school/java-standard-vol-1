@@ -1,9 +1,9 @@
-package chapter03;
+package chapter02;
 
 /**
  * 3.4 정수의 진법 변환
  */
-public class Chapter03_4 {
+public class Chapter02_3_4 {
 
     /**
      * 10진수를 n진수로 변환

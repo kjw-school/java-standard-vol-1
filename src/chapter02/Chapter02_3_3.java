@@ -1,9 +1,9 @@
-package chapter03;
+package chapter02;
 
 /**
  * 3.3 8진법과 16진법
  */
-public class Chapter03_3 {
+public class Chapter02_3_3 {
 
     /**
      * 8진수는 2진수 3자리를, 16진수는 2진수 4자리를 각각 한자리로 표현할 수 있기 때문에 자리수가 짧아져서 알아보기 쉽고 서로 간의 변환방법
