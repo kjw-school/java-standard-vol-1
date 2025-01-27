@@ -90,7 +90,10 @@ public class Chapter06_2 {
 	 *     5. System.out.println("현재 채널은 " + t.channel + " 입니다.");<br>
 	 *     참조변수 t가 참조하고 있는 Tv인스턴스의 멤버변수 channel에 저장되어 있는 값을 출력한다.<br>
 	 *     현재 channel의 값은 6이므로 '현재 채널은 6 입니다.'7가 화면에 출력된다.<br>
-	 *     <b>인스턴스는 참조변수를 통해서만 다룰 수 있으며, 참조변수의 타입은 인스턴스의 타입과 일치해야한다.</b>
+	 *     <b>인스턴스는 참조변수를 통해서만 다룰 수 있으며, 참조변수의 타입은 인스턴스의 타입과 일치해야한다.</b><br>
+	 *     같은 클래스로부터 생성되었을지라도 각 인스턴스의 속성(멤버변수)은 서로 다른 값을 유지할 수 있으며, 메서드의 내용은 모든 인스턴스에 대해 동일하다.<br>
+	 *     참조변수에는 하나의 값(주소)만이 저장될 수 있으므로 둘 이상의 참조변수가 하나의 인스턴스를 가리키는(참조하는) 것은 가능하지만<br>
+	 *     하나의 참조변수로 여러 개의 인스턴스를 가리키는 것은 가능하지 않다.
 	 * </p>
 	 */
 	static class TvTest {
@@ -104,5 +107,93 @@ public class Chapter06_2 {
 		}
 
 	}
+
+	static class TvTest2 {
+
+		public static void main(String[] args) {
+			Tv t1 = new Tv();
+			Tv t2 = new Tv();
+
+			System.out.println("t1의 channel값은 " + t1.channel + "입니다.");
+			System.out.println("t2의 channel값은 " + t2.channel + "입니다.");
+
+			t1.channel = 7;
+			System.out.println("t1의 channel값을 7로 변경하엿습니다.");
+
+			System.out.println("t1의 channel값은 " + t1.channel + "입니다.");
+			System.out.println("t2의 channel값은 " + t2.channel + "입니다.");
+		}
+
+	}
+
+	static class TvTest3 {
+
+		public static void main(String[] args) {
+			Tv t1 = new Tv();
+			Tv t2 = new Tv();
+
+			System.out.println("t1의 channel값은 " + t1.channel + "입니다.");
+			System.out.println("t2의 channel값은 " + t2.channel + "입니다.");
+
+			t2 = t1;
+			t1.channel = 7;
+			System.out.println("t1의 channel값을 7로 변경하엿습니다.");
+
+			System.out.println("t1의 channel값은 " + t1.channel + "입니다.");
+			System.out.println("t2의 channel값은 " + t2.channel + "입니다.");
+		}
+
+	}
+
+	/**
+	 * <p>
+	 *     <h5>2.5 객체 배열</h5><br>
+	 *     많은 수의 객체를 다뤄야할 때 객체 역시 배열로 다루는 것이 가능하며, 이를 '객체 배열'이라고한다.<br>
+	 *     그렇다고 객체 배열 안에 객체가 저장되는 것은 아니고, 객체의 주소가 저장된다. 사실 객체 배열은 참조변수들을 하나로 묶은 참조변수 배열인 것이다.<br>
+	 *     객체 배열을 생성하는 것은, 그저 객체를 다루기 위한 참조변수들이 만들어진 것일 뿐, 아직 객체가 저장되지 않았다.<br>
+	 *     객체를 생성해서 객체 배열의 각 요소에 저장하는 것을 잊으면 안 된다.
+	 * </p>
+	 */
+	static class Memo04 {}
+
+	static class TvTest4{
+
+		public static void main(String[] args) {
+			Tv[] tvArr = new Tv[3];	 // 길이가 3인 Tv객체 배열
+
+			//Tv객체를 생성해서 Tv객체 배열의 각 요소에 저장
+			for(int i = 0; i < tvArr.length; i++) {
+				tvArr[i] = new Tv();
+				tvArr[i].channel = i+10; // tvArr[i]의 channel에 i+10을 저장
+			}
+
+			for(int i = 0; i < tvArr.length; i++) {
+				tvArr[i].channelUp(); // tvArr[i]의 메서드를 호출. 채널이 1증가
+				System.out.printf("tvArr[%d].channel=%d%n", i, tvArr[i].channel);
+			}
+
+		} // main의 끝
+
+	}
+
+	/**
+	 * <p>
+	 *     <h5>2.6 클래스의 또 다른 정의</h5><br>
+	 *     1. 클래스 - 데이터와 함수의 결합<br>
+	 *     프로그래밍언어에서 데이터 처리를 위한 데이터 저장형태의 발전과정은 다음과 같다.<br>
+	 *     변수 -> 배열 -> 구조체 -> 클래스
+	 *     <br>
+	 *     <b>1.변수 - 하나의 데이터를 저장할 수 있는 공간</b><br>
+	 *     <b>2.배열 - 같은 종류의 여러 데이터를 하나의 집합으로 저장할 수 있는 공간</b><br>
+     *     <b>3.구조체 - 서로 관련된 여러 데이터를 종류의 관계없이 하나의 집합으로 저장할 수 있는 공간</b><br>
+	 *     <b>4.클래스 - 데이터와 함수의 결합(구조체 + 함수)</b><br>
+	 *     서로 관련된 변수들을 정의하고 이들에 대한 작업을 수행하는 함수들을 함께 정의한 것이 바로 클래스이다.<br>
+	 *     2. 클래스 - 사용자정의 타입(user-defined type)<br>
+	 *     프로그래밍언어에서 제공하는 자료형(primitive type)외에 프로그래머가 서로 관련된 변수들을 묶어서 하나의 타입으로 새로 추가하는 것을<br>
+	 *     사용자정의 타입(user-defined type)이라고 한다.<br>
+	 *     자바와 같은 객체지향언어에서는 클래스가 곧 사용자 정의 타입이다.
+	 * </p>
+	 */
+	static class Memo05 {}
 
 }
