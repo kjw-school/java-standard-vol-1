@@ -48,8 +48,72 @@ public class Chapter06_3 {
 	/**
 	 * <p>
 	 *     <h5>3.2 클래스변수와 인스턴스변수</h5><br>
+	 *     <b>인스턴스변수는 인스턴스가 생성될 때 마다 생성되므로 인스턴스마다 각기 다른 값을 유지할 수 있지만, 클래스 변수는 모든 인스턴스가</b><br>
+	 *     <b>하나의 저장공간을 공유하므로, 항상 공통된 값을 갖는다.</b>
+	 * </p>
+	 */
+	static class CardTest {
+
+		public static void main(String[] args) {
+
+			System.out.println("Card.width = " + Card.width); // <- 클래스변수(static변수)는 객체생성 없이 '클래스이름.클래스변수'로 직접 사용 가능하다.
+			System.out.println("Card.height = " + Card.height);
+
+			Card c1 = new Card();
+			c1.kind = "Heart"; // <- 인스턴스변수의 값을 변경한다.
+			c1.number = 7; // <- 인스턴스변수의 값을 변경한다.
+
+			Card c2 = new Card();
+			c2.kind = "Spade";
+			c2.number = 4;
+
+			System.out.println("c1은 " + c1.kind + ", " + c1.number + "이며, 크기는 (" + c1.width + ", " + c1.height + ")");
+			System.out.println("c2는 " + c2.kind + ", " + c2.number + "이며, 크기는 (" + c2.width + ", " + c2.height + ")");
+			System.out.println("c1의 width와 height를 각각 50, 80으로 변경합니다.");
+
+			c1.width = 50; // <- 클래스변수의 값을 변경한다.
+			c1.height = 80; // <- 클래스변수의 값을 변경한다.
+
+			System.out.println("c1은 " + c1.kind + ", " + c1.number + "이며, 크기는 (" + c1.width + ", " + c1.height + ")");
+			System.out.println("c2는 " + c2.kind + ", " + c2.number + "이며, 크기는 (" + c2.width + ", " + c2.height + ")");
+
+		}
+
+	}
+
+	static class Card {
+		String kind;
+		int number;
+		static int width = 100;
+		static int height = 250;
+	}
+
+	/**
+	 * <p>
+	 *     <h5>3.3 메서드</h5><br>
+	 *     '메서드(method)'는 특정 작업을 수행하는 일련의 문장들을 하나로 묶은 것이다. 기본적으로 수학의 함수와 유사하며, 어떤 값을 입력하면<br>
+	 *     이 값으로 작업을 수행해서 결과를 반환한다.<br>
+	 *     <small>※수학의 함수와 달리 메서드는 입력값 또는 출력값(결과값)이 없을 수도 있으며, 심지어는 입력값과 출력값이 모두 없을 수도 있다.</small><br>
+	 *     그저 메서드가 작업을 수행하는데 필요한 값만 넣고 원하는 결과를 얻으면 될 뿐, 이 메서드가 내부적으로 어떤 과정을 거쳐 결과를 만들어내는지 전혀 몰라도 된다.<br>
+	 *     메서드를 내부가 보이지 않는 '블랙박스(black box)'라고도 한다.<br>
+	 *     메서드를 사용하는 이유<br>
+	 *     <b>1. 높은 재사용성(reusability)</b><br>
+	 *     <b>2. 중복된 코드의 제거</b><br>
+	 *     <b>3. 프로그램의 구조화</b><br>
 	 * </p>
 	 */
 	class Memo02{}
+
+	/**
+	 * <p>
+	 *     <h5>3.4 메서드의 선언과 구현</h5><br>
+	 *     메서드는 크게 두 부분, '선언부(header,머리)'와 '구현부(body, 몸통)'로 이루어져 있다.<br>
+	 *     메서드를 정의한다는 것은 선언부와 구현부를 작성하는 것을 뜻한다.<br>
+	 *     <b>메서드 선언부(method declaration, method header)</b><br>
+	 *     메서드 선언부는 '메서드의 이름'과 '매개변수 선언', 그리고 '반환타입'으로 구성되어 있으며, 메서드가 작업을 수행하기 위해 어떤 값들을<br>
+	 *     필요로 하고 작업의 결과로 어떤 타입의 값을 반환하는지에 대한 정보를 제공한다.
+	 * </p>
+	 */
+	class Memo03{}
 	
 }
