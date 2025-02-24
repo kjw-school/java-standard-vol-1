@@ -33,7 +33,7 @@ public class Chapter06_3 {
 	 * 		인스턴스는 독립적인 저장공간을 가지므로 서로 다른 값을 가질 수 있다. 인스턴스마다 고유한 상태를 유지해야하는 속성의 경우, 인스턴스변수로 선언한다.<br>
 	 * 		2. 클래스변수(class variable)<br>
 	 * 		클래스 변수를 선언하는 방법은 인스턴스변수 앞에 static을 붙이기만 하면 된다. 인스턴스마다 독립적인 저장공간을 갖는 인스턴스변수와는 달리,<br>
-     *      클래스변수는 모든 인스턴스가 공통된 저장공간(변수)을 공유하게 된다.<br>
+	 *      클래스변수는 모든 인스턴스가 공통된 저장공간(변수)을 공유하게 된다.<br>
 	 *      한 클래스의 모든 인스턴스들이 공통적인 값을 유지해야하는 속성의 경우, 클래스변수로 선언해야 한다.<br>
 	 *      클래스 변수는 인스턴스변수와 달리 인스턴스를 생성하지 않고도 언제라도 바로 사용할 수 있다는 특징이있으며, '클래스이름.클래스변수'와 같은 형식으로 사용한다.<br>
 	 *      클래스가 메모리에 '로딩(loading)'될 때 생성되어 프로그램이 종료될 때 가지 유지되며, public을 앞에 붙이면 같은 프로그램내에서 어디서나 접근할 수 있는 '전역변수(global variable)'의 성격을 갖는다.<br>
@@ -43,7 +43,8 @@ public class Chapter06_3 {
 	 *      메서드 내에 선언되어 메서드 내에서만 사용 가능하며, 메서드가 종료되면 소멸되어 사용할 수 없게된다.
 	 * </p>
 	 */
-	class Memo01{}
+	class Memo01 {
+	}
 
 	/**
 	 * <p>
@@ -102,7 +103,8 @@ public class Chapter06_3 {
 	 *     <b>3. 프로그램의 구조화</b><br>
 	 * </p>
 	 */
-	class Memo02{}
+	class Memo02 {
+	}
 
 	/**
 	 * <p>
@@ -114,7 +116,8 @@ public class Chapter06_3 {
 	 *     필요로 하고 작업의 결과로 어떤 타입의 값을 반환하는지에 대한 정보를 제공한다.
 	 * </p>
 	 */
-	class Memo03{}
+	class Memo03 {
+	}
 
 	/**
 	 * <h5>매개변수 선언(parameter declaration)</h5><br>
@@ -122,25 +125,29 @@ public class Chapter06_3 {
 	 * 쉼표','를 사용한다.<br>
 	 * ※<small>매개변수도 메서드 내에 선언된 것으로 간주되므로 '지역변수(local variable)'이다.</small><br>
 	 */
-	class Memo04{}
+	class Memo04 {
+	}
 
 	/**
 	 * <h5>메서드의 이름(method name)</h5><br>
 	 * 메서드의 이름도 앞서 배운 변수의 명명규칙대로 작성하면 된다.
 	 */
-	class Memo05{}
+	class Memo05 {
+	}
 
 	/**
 	 * <h5>반환타입(return type)</h5><br>
 	 * 메서드의 작업수행 결과(출력)인 '반환값(return value)'의 타입을 적는다. 반환값이 없는 경우 반환타입으로 'void'를 적어야한다.
 	 */
-	class Memo06{}
+	class Memo06 {
+	}
 
 	/**
 	 * <h5>메서드의 구현부(method body, 메서드 몸통)</h5><br>
 	 * 메서드의 선언부 다음에 오는 괄호{}를 '메서드의 구현부'라고 하는데, 여기에 메서드를 호출했을 때 수행될 문장들을 넣는다.
 	 */
-	class Memo07{}
+	class Memo07 {
+	}
 
 	/**
 	 * <h5>return문</h5><br>
@@ -148,7 +155,8 @@ public class Chapter06_3 {
 	 * 이 문장은 작업을 수행한 결과인 반환값을 호출한 메서드로 전달하는데, 이 값의 타입은 반환타입과 <b>일치하거나 적어도 자동 형변환이 가능한 것</b>이어야 한다.<br>
 	 * 여러 개의 변수를 선언할 수 있는 매개변수와 달리 return문은 단 하나의 값만 반환할 수 있는데, 메서드로의 입력(매개변수)은 여러 개일 수 있어도 출력(반환값)은 최대 하나만 허용하는 것이다.
 	 */
-	class Memo08{}
+	class Memo08 {
+	}
 
 	/**
 	 * <h5>지역변수(local variable)</h5><br>
@@ -156,6 +164,81 @@ public class Chapter06_3 {
 	 * 이처럼 메서드 내에 선언된 변수를 '지역변수(local variable)'라고 한다.<br>
 	 * <small>※매개변수도 메서드 내에 선언된 것으로 간주되므로 지역변수이다.</small>
 	 */
-	class Memo09{}
-	
+	class Memo09 {
+	}
+
+	/**
+	 * <h5>3.5 메서드의 호출</h5><br>
+	 * 메서드를 정의했어도 호출되지 않으면 아무 일도 일어나지 않는다. 메서드를 호출해야만 구현부{}의 문장들의 수행된다.<br>
+	 * <small>※main메서드는 프로그램 실행 시 OS에 의해 자동적으로 호출된다.</small><br>
+	 * <code>메서드이름(값1, 값2, ...) // 메서드를 호출하는 방법</code>
+	 */
+	class Memo10 {
+	}
+
+	/**
+	 * <h5>인자(argument)와 매개변수(parameter)</h5><br>
+	 * 메서드를 호출할 때 괄호{}안에 저장해준 값들을 '인자(argument)' 또는 '인수'라고 하는데, 인자의 개수와 순서는 호출된 메서드에 선언된 매개변수와 일치해야 한다.<br>
+	 * 그리고 인자는 메서드가 호출되면서 매개변수에 대입되므로, 인자의 타입은 매개변수의 타입과 일치하거나 자동 형변환이 가능한 것이어야 한다.<br>
+	 * <code>
+	 *     public static void main(String args[]) {<br>
+	 *         int result = add(3, 5) // 메서드를 호출, (3,5) = 인자(argument, 원본)<br>
+	 *     }<br>
+	 *
+	 *     int add(int x, int y) {<br>
+	 *         ... // (x, y) = 매개변수(parameter, 복사본)<br>
+	 *     }
+	 * </code>
+	 */
+	class Memo11 {
+	}
+
+	/**
+	 * <h5>메서드의 실행흐름</h5><br>
+	 * 같은 클래스 내의 메서드 끼리는 참조변수를 사용하지 않고도 서로 호출이 가능하지만 static메서드는 같은 클래스 내의 인스턴스 메서드를 호출할 수 없다.<br>
+	 */
+	class Memo12 {
+	}
+
+	/**
+	 * MyMath클래스의 'add(long a, long b)'를 호출하기 위해서는 먼저 'MyMath mm = new MyMath();'와 같이 해서, MyMath클래스의 인스턴스를 생성한 다음 참조변수 mm을 통해야한다.<br>
+	 * <code>
+	 *     MyMath mm = new MyMath(); // 먼저 인스턴스를 생성한다.<br>
+	 *     long value = mm.add(1L, 2L); // 메서드를 호출한다.<br>
+	 *     long add(long a, long b) {<br>
+	 *         long result = a + b;<br>
+	 *         return result;<br>
+	 *     }<br>
+	 * </code>
+	 * 1. main메서드에서 메서드 add를 호출한다. 호출시 지정한 1L과 2L이 메서드 add의 매개변수 a,b에 각각 복사(대입)된다.<br>
+	 * 2. 메서드 add의 괄호{}안에 있는 문장들이 순서대로 수행된다.<br>
+	 * 3. 메서드 add의 모든 문장이 실행되거나 return문을 만나면, 호출한 메서드(main메서드)로 되돌아와서 이후의 문장들을 실행한다.<br>
+	 * 메서드가 호출되면 지금까지 실행 중이던 메서드는 실행을 잠시 멈추고 호출된 메서드의 문장들이 실행된다.<br>
+	 * 편의상 메서드 add의 호출결과가 바로 vaule에 저장되는 것처럼 그렸지만, 사실은 호출한 자리를 반환값이 대신하고 대입연산자에 의해 이 값이 변수 value에 저장된다.
+	 */
+	class MyMath {
+		long add(long a, long b) {
+			long result = a + b;
+			return result;
+			// return a + b; 위의 두 줄을 이와 같이 한 줄로 간단히 할 수 있다.
+		}
+
+		long subtract(long a, long b) {
+			return a - b;
+		}
+
+		long multiply(long a, long b) {
+			return a * b;
+		}
+
+		double divide(long a, long b) {
+			return a / b;
+		}
+
+	}
+
+	static class MyMathTest {
+
+	}
+
 }
