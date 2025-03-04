@@ -216,7 +216,7 @@ public class Chapter06_3 {
 	 * 메서드가 호출되면 지금까지 실행 중이던 메서드는 실행을 잠시 멈추고 호출된 메서드의 문장들이 실행된다.<br>
 	 * 편의상 메서드 add의 호출결과가 바로 vaule에 저장되는 것처럼 그렸지만, 사실은 호출한 자리를 반환값이 대신하고 대입연산자에 의해 이 값이 변수 value에 저장된다.
 	 */
-	class MyMath {
+	static class MyMath {
 		long add(long a, long b) {
 			long result = a + b;
 			return result;
@@ -238,6 +238,92 @@ public class Chapter06_3 {
 	}
 
 	static class MyMathTest {
+
+		public static void main(String[] args) {
+
+			MyMath mm = new MyMath();
+			long result1 = mm.add(5L, 3L);
+			long result2 = mm.subtract(5L, 3L);
+			long result3 = mm.multiply(5L, 3L);
+			double result4 = mm.divide(5L, 3L);
+
+			System.out.println("add(5L, 3L) = " + result1);
+			System.out.println("subtract(5L, 3L) = " + result2);
+			System.out.println("multiply(5L, 3L) = " + result3);
+			System.out.println("divide(5L, 3L) = " + result4);
+
+		}
+
+	}
+
+	/**
+	 * <h5>3.6 return문</h5>
+	 * <br>
+	 * return문은 현재 실행준인 메서드를 종료하고 호출한 메서드로 되돌아간다. 지금까지 반환값이 있을 때만 return문을 썼지만, 원래는 반환값의<br>
+	 * 유무에 관계없이 모든 메서드에는 적어도 하나의 return문이 있어야 한다. 그런데도 반환타입이 void인 경우, return문 없이도 아무런 문제가 없었던 이유는<br>
+	 * 컴파일러가 메서드의 마지막에 'return;'을 자동적으로 추가해주었기 때문이다.
+	 */
+	class Memo13 {
+	}
+
+	/**
+	 * <h5>반환값(return value)</h5>
+	 * <br>
+	 * return문의 반환값으로 주로 변수가 오긴 하지만 항상 그런 것은 아니다. 아래 왼쪽의 코드는 오른쪽과 같이 간략히 할 수 있는데, 그렇다고 해서<br>
+	 * 수식이 반환되는 것은 아니고, 이 수식을 계산한 결과가 반환된다.
+	 */
+	class Memo14 {
+
+		int add(int x, int y) {
+			int result = x + y;
+			return result;
+		}
+
+		int addChange(int x, int y) {
+			return x + y;
+		}
+
+	}
+
+	/**
+	 * <h1>매개변수의 유효성 검사</h1>
+	 * <br>
+	 * 메서드의 구현부{}를 작성할 때, 제일 먼저 해야 하는 일이 매개변수의 값이 적절한 것인지 확인하는 것이다.
+	 */
+	class Memo15 {
+
+	}
+
+	/**
+	 * <h1>3.7 JVM의 메모리 구조</h1>
+	 * <br>
+	 * 응용프로그램이 실행되면, JVM은 시스템으로부터 프로그램을 수행하는데 필요한 메모리를 할당받고 JVM은 이 메모리를 용도에 따라 여러 영역으로 나누어 관리한다.<br>
+	 * 그 중 3가지 주요 영역(method area, call stack, heap)에 대해서 알아보자.<br>
+	 * 1. 메서드 영역(method area)<br>
+	 * - 프로그램 실행 중 어떤 클래스가 사용되면, JVM은 해당 클래스의 클래스파일(*.class)을 읽어서 분석하여 클래스에 대한 정보(클래스 데이터)를 이곳에 저장한다.<br>
+	 * 이 때, 그 클래스의 클래스변수(class variable)도 이 영역에 함께 생성된다.<br>
+	 * 2. 힙(heap)<br>
+	 * - 인스턴스가 생성되는 공간, 프로그램 실행 중 생성되는 인스턴스는 모두 이곳에 생성된다. 즉, 인스턴스 변수(instance variable)들이 생성되는 공간이다.<br>
+	 * 3. 호출스택(call stack 또는 execution stack)<br>
+	 * - 호출스택은 메서드의 작업에 필요한 메모리 공간을 제공한다. 메서드가 호출되면, 호출스택에 호출된 메서드를 위한 메모리가 할당되며,<br>
+	 * 이 메모리는 메서드가 작업을 수행하는 동안 지역변수(매개변수 포함)들과 연산의 중간결과 등을 저장하는데 사용된다. 그리고 메서드가 작업을 마치면<br>
+	 * 할당되었던 메모리공간은 반환되어 비워진다.<br>
+	 * 각 메서드를 위한 메모리상의 작업공간은 서로 구별되며, 첫 번째로 호출된 메서드를 위한 작업공간이 호출스택의 맨 밑에 마련되고, 첫 번째 메서드 수행중에 다른 메서드를 호출하면,<br>
+	 * 첫 번째 메서드의 바로 위에 두 번째로 호출된 메서드를 위한 공간이 마련된다.<br>
+	 * 이 때 첫 번째 메서드는 수행을 멈추고, 두 번째 메서드가 수행되기 시작한다. 두 번째로 호출된 메서드가 수행을 마치게 되면, 두 번째 메서드를 위해 제공되었던 호출스택의 메모리 공간이 반환되며,<br>
+	 * 첫 번째 메서드는 다시 수행을 계속하게 된다. 첫 번째 메서드가 수행을 마치면, 역시 제공되었던 메모리 공간이 호출스택에서 제거되며 호출스택은 완전히 비워지게 된다.<br>
+	 * 호출스택의 제일 상위에 위치하는 메서드가 현재 실행 중인 메서드이며, 나머지는 대기상태에 있게 된다.<br>
+	 * - 메서드가 호출되면 수행에 필요한 만큼의 메모리를 스택에 할당받는다.<br>
+	 * - 메서드가 수행을 마치고나면 사용했던 메모리를 반환하고 스택에서 제거된다.<br>
+	 * - 호출스택의 제일 위에 있는 메서드가 현재 실행 중인 메서드이다.<br>
+	 * - 아래에 있는 메서드가 바로 위의 메서드를 호출한 메서드이다.<br>
+	 * 반환타입(return type)이 있는 메서드는 종료되면서 결과값을 자신을 호출한 메서드(caller)에게 반환한다. 대기상태에 있던 호출한 메서드(caller)는 넘겨받은 반환값으로 수행을 계속 진행하게 된다.
+	 */
+	class Memo16 {
+
+	}
+
+	static class CallStackTest {
 
 	}
 
