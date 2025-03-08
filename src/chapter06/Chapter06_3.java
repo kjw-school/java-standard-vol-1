@@ -323,7 +323,120 @@ public class Chapter06_3 {
 
 	}
 
+	/**
+	 * 1~2. 아래 예제를 실행시키면, JVM에 의해서 main메서드가 호출됨으로써 프로그램이 시작된다. 이 때, 호출스택에는 main메서드를 위한 메모리 공간이 할당되고 main메서드의 코드가 수행되기 시작한다.<br>
+	 * 3. main메서드에서 firstMethod()를 호출한 상태이다. 아직 main메서드가 끝난 것은 아니므로 main메서드는 호출스택에 대기상태로 남아있고 firstMethod()의 수행이 시작된다.<br>
+	 * 4. firstMethod()에서 다시 secondMethod()를 호출했다. firstMethod()는 secondMethod()가 수행을 마칠때까지 대기상태에 있게 된다. secondMethod()가 수행을 마쳐야 firstMethod()의 나머지 문장들을 수행할 수 있기 때문이다.<br>
+	 * 5. secondMethod()에서 println()을 호출했다. println메서드에 의해 'secondMethod()'가 화면에 출력된다.<br>
+	 * 6. println메서드의 수행이 완료되어 호출스택에서 사라지고 자신을 호출한 secondMethod()로 되돌아간다. 대기 중이던 secondMethod()는 println()을 호출한 이후부터 수행을 재개한다.<br>
+	 * 7. secondMethod()에 더 이상 수행할 코드가 없으므로 종료되고, 자신을 호출한 firstMethod()로 돌아간다.<br>
+	 * 8. firstMethod()에도 더 이상 수행할 코드가 없으므로 종료되고, 자신을 호출한 main메서드로 돌아간다.<br>
+	 * 9. main메서드에도 더 이상 수행할 코드가 없으므로 죵로되어, 호출스택은 완전히 비워지게 되고 프로그램은 종료된다.
+	 */
 	static class CallStackTest {
+
+		public static void main(String[] args) {
+			firstMethod();
+		}
+
+		static void firstMethod() {
+			secondMethod();
+		}
+
+		static void secondMethod() {
+			System.out.println("secondMethod()");
+		}
+
+	}
+
+	static class CallStackTest2 {
+
+		public static void main(String[] args) {
+			System.out.println("main(String[] args)이 시작되었음.");
+			firstMethod();
+			System.out.println("main(String[] args)이 끝났음.");
+		}
+
+		static void firstMethod() {
+			System.out.println("firstMethod()이 시작되었음.");
+			secondMethod();
+			System.out.println("firstMethod()이 끝났음.");
+		}
+
+		static void secondMethod() {
+
+			System.out.println("secondMethod()이 시작되었음.");
+			System.out.println("secondMethod()이 끝났음.");
+
+		}
+
+	}
+
+	/**
+	 * <h5>3.8 기본형 매개변수와 참조형 매개변수</h5><br>
+	 * 자바에서는 메서드를 호출할 때 매개변수로 지정한 값을 메서드의 매개변수에 복사해서 넘겨준다.<br>
+	 * 매개변수의 타입이 기본형(primitive type)일 때는 기본형 값이 복사되겠지만, 참조형(reference type)이면 인스턴스의 주소가 복사된다.<br>
+	 * 메서드의 매개변수를 기본형으로 선언하면 단순히 저장된 값만 얻지만, 참조형으로 선언하면 값이 저장된 곳의 주소를 알 수 있기 때문에 값을 읽어 오는 것은 물론 값을 변경하는 것도 가능하다.<br>
+	 * <b>기본형 매개변수</b> - 변수의 값을 읽기만 할 수 있다.(read only)<br>
+	 * <b>참조형 매개변수</b> - 변수의 값을 읽고 변경할 수 있다.(read & write)
+	 */
+	class Memo17 {
+
+	}
+
+	static class Data {
+		int x;
+	}
+
+	/**
+	 * 1. change메서드가 호출되면서 'd.x'가 change메서드의 매개변수 x에 복사됨<br>
+	 * 2. change메서드에서 x의 값을 1000으로 변경<br>
+	 * 3. change메서드가 종료되면서 매개변수 x는 스택에서 제거됨
+	 */
+	static class PrimitiveParamEx {
+
+		public static void main(String[] args) {
+			Data d = new Data();
+			d.x = 10;
+			System.out.println("main() : x = " + d.x);
+
+			change(d.x);
+			System.out.println("After change(d.x)");
+			System.out.println("main() : x = " + d.x);
+		}
+
+		static void change(int x) { // 기본형 매개변수
+			x = 1000;
+			System.out.println("change() : x = " + x);
+		}
+
+	}
+
+	class Data2 {
+		int x;
+	}
+
+	/**
+	 * 1. change메서드가 호출되면서 참조변수 d의 값(주소)이 매개변수 d에 복사됨. 이제 매개변수 d에 저장된 주소값으로 x에 접근이 가능<br>
+	 * 2. change메서드에서 매개변수 d로 x의 값을 1000으로 변경.<br>
+	 * 3. change메서드가 종료되면서 매개변수 d는 스택에서 제거됨
+	 */
+	static class ReferenceParamEx {
+
+		public static void main(String[] args) {
+			Data d = new Data();
+			d.x = 10;
+			System.out.println("main() : x = " + d.x);
+
+			change(d);
+			System.out.println("After change(d)");
+			System.out.println("main() : x = " + d.x);
+		}
+
+		static void change(Data d) { // 참조형 매개변수
+			d.x = 1000;
+			System.out.println("change() : x = " + d.x);
+		}
 
 	}
 
