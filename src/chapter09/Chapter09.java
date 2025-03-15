@@ -76,9 +76,36 @@ public class Chapter09 {
 	}
 
 	/**
-	 * <h5>StringBuffer의 비교</h5>
+	 * <h5>StringBuffer의 비교</h5><br>
+	 * String클래스에서는 equals메서드를 오버라이딩해서 문자열의 내용을 비교하도록 구현되어 있지만<br>
+	 * StringBuffer클래스는 equals메서드를 오버라딩하지 않아서 StringBuffer클래스의 equals메서드를 사용해도 등가비교연산자(==)로 비교한 것과 같은 결과를 얻는다.<br>
+	 * <code>
+	 *     StringBuffer sb = new StringBuffer("abc");<br>
+	 *     StringBuffer sb2 = new Stringbuffer("abc");<br>
+	 *     System.out.println(sb == sb2); // false<br>
+	 *     System.out.println(sb.equals(sb2)); // false
+	 * </code><br>
+	 * 반면에 toString()은 오버라이딩되어 있어서 StringBuffer인스턴스에 toString()을 호출하면, 담고있는 문자열을 String으로 반환한다.<br>
+	 * StringBuffer인스턴스에 담긴 문자열을 비교하기 위해서는 StringBuffer인스턴스 toString()을 호출해서 String인스턴스를 얻은 다음, 여기에 equals메서드를 사용해서 비교해야한다.
 	 */
 	class tempMemo4 {
+	}
+
+	static class StringBufferEx1 {
+		public static void main(String[] args) {
+			StringBuffer sb = new StringBuffer("abc");
+			StringBuffer sb2 = new StringBuffer("abc");
+
+			System.out.println("sb == sb2 ? " + (sb == sb2));
+			System.out.println("sb.equals(sb2) ? " + (sb.equals(sb2)));
+
+			// StringBuffer의 내용을 String으로 변환한다.
+			String s = sb.toString(); // String s = new String(sb); 와 같다
+			String s2 = sb2.toString();
+
+			System.out.println("s.equals(s2) ? " + s.equals(s2));
+
+		}
 	}
 
 	/**
@@ -91,6 +118,22 @@ public class Chapter09 {
 	 * StringBuffer도 충분히 성능이 좋기 때문에 성능향상이 반드시 필요한 경우를 제외하고는 기존에 작성한 코드에서 StringBuffer를 StringBuilder로 굳이 바꿀 필요는 없다.
 	 */
 	class tempMemo5 {
+	}
+
+	/**
+	 * <h5>1.4 Math클래스</h5><br>
+	 * Math클래스는 기본적인 수학계산에 유용한 메서드로 구성되어 있다.<br>
+	 * Math클래스의 생성자는 접근 제어자가 private이기 때문에 다른 클래스에서 Math인스턴스를 생성할 수 없도록 되어있다.<br>
+	 * 그 이유는 클래스 내에 인스턴스변수가 하나도 없어서 인스턴스를 생성할 필요가 없기 때문이다.<br>
+	 */
+	class tempMemo06 {
+
+	}
+
+	/**
+	 * <h5>올림, 버림, 반올림</h5><br>
+	 */
+	class tempMemo07 {
 	}
 
 }
