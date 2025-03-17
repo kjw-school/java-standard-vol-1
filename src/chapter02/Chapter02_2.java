@@ -38,11 +38,45 @@ public class Chapter02_2 {
 	 * 즉, boolean을 제외한 나머지 7개의 기본형은 서로 연산과 변환이 가능하다.<br>
 	 * 정수는 가장 많이 사용되므로 타입을 4가지나 제공한다.<br>
 	 * 일반적으로 int를 많이사용한다. 왜냐하면, int는 CPU가 가장 효율적으로 처리할 수 있는 타입이기 때문이다.<br>
-	 * 종류/크기 1 byte    2 byte    4 byte    8 byte<br>
-	 * 논리형    boolean<br>
-	 * 문자형              char<br>
-	 * 정수형    byte      short     int       long<br>
-	 * 실수형                       float      double<br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <th>종류/크기</th>
+	 *         <th>1 byte</th>
+	 *         <th>2 byte</th>
+	 *         <th>4 byte</th>
+	 *         <th>8 byte</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>논리형</td>
+	 *             <td>boolean</td>
+	 *             <td></td>
+	 *             <td></td>
+	 *             <td></td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>문자형</td>
+	 *             <td></td>
+	 *             <td>char</td>
+	 *             <td></td>
+	 *             <td></td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>정수형</td>
+	 *             <td>byte</td>
+	 *             <td>short</td>
+	 *             <td>int</td>
+	 *             <td>long</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>실수형</td>
+	 *             <td></td>
+	 *             <td></td>
+	 *             <td>float</td>
+	 *             <td>double</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 * - boolean은 true와 false 두 가지 값만 표현할 수 있으면 되므로 가장 작은 크기인 1 byte.<br>
 	 * - char은 자바에서 유니코드(2 byte 문자체계)를 사용햐므로 2 byte<br>
 	 * - byte는 크기가 1 byte라서 byte.<br>
