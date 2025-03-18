@@ -212,7 +212,182 @@ public class Chapter02_4 {
 
 	/**
 	 * <h5>정수형의 오버플로우</h5><br>
+	 * 원래 2진수 '1111'에 1을 더하면 '10000'이 되지만, 4 bit로는 4자리의 2진수만 저장할 수 있기 때문에 '0000'이 된다.<br>
+	 * 즉, 5자리의 2진수 '10000'중에서 하위 4 bit만 저장하게 되는것이다.<br>
+	 * 연산과정에서 <b>해당 타입이 표현할 수 있는 값의 범위를 넘어서는 것을 오버플로우(overflow)</b>라고 한다.<br>
+	 * 정수형 타입이 표현할 수 있는 최대값에 1을 더하면 최소값이 되고, 최소값에서 1을 빼면 최대값이 된다.<br>
+	 * <b>최대값 + 1 -> 최소값</b><br>
+	 * <b>최소값 - 1 -> 최대값</b>
 	 */
 	class Memo11 {
 	}
+
+	/**
+	 * <h5>부호있는 정수의 오버플로우</h5><br>
+	 * <b>부호있는 정수는 부호비트가 0에서 1이 될 때 오버플로우가 발생한다.</b><br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <th>부호없는 10진수</th>
+	 *         <th>2진수</th>
+	 *         <th>부호있는 10진수</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>0</td>
+	 *             <td>0000</td>
+	 *             <td>0</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>1</td>
+	 *             <td>0001</td>
+	 *             <td>1</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>2</td>
+	 *             <td>0010</td>
+	 *             <td>2</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>3</td>
+	 *             <td>0011</td>
+	 *             <td>3</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>4</td>
+	 *             <td>0100</td>
+	 *             <td>4</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>5</td>
+	 *             <td>0101</td>
+	 *             <td>5</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>6</td>
+	 *             <td>0110</td>
+	 *             <td>6</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>7</td>
+	 *             <td>0111</td>
+	 *             <td>7 <- 최대값</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>8</td>
+	 *             <td>1000</td>
+	 *             <td>-8 <- 최소값</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>9</td>
+	 *             <td>1001</td>
+	 *             <td>-7</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>10</td>
+	 *             <td>1010</td>
+	 *             <td>-6</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>11</td>
+	 *             <td>1011</td>
+	 *             <td>-5</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>12</td>
+	 *             <td>1100</td>
+	 *             <td>-4</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>13</td>
+	 *             <td>1101</td>
+	 *             <td>-3</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>14</td>
+	 *             <td>1110</td>
+	 *             <td>-2</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>최대값 -> 15</td>
+	 *             <td>1111</td>
+	 *             <td>-1</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>최소값 -> 0</td>
+	 *             <td>0000</td>
+	 *             <td>0</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>1</td>
+	 *             <td>0001</td>
+	 *             <td>1</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>2</td>
+	 *             <td>0010</td>
+	 *             <td>2</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 16비트로 표현할 수 있는 정수의 개수 : 2^16개(65536개)<br>
+	 * short타입의 표현범위 : -2^16 ~ 2^15 -1 (-32768 ~ 32767)<br>
+	 * char타입의 표현범위 : 0 ~ 2^16 -1 (0 ~ 65535)
+	 */
+	class Memo12 {
+
+	}
+
+	static class OverflowEx {
+
+		public static void main(String[] args) {
+			short sMin = -32768;
+			short sMax = 32767;
+			char cMin = 0;
+			char cMax = 65535;
+
+			System.out.println("sMin = " + sMin);
+			System.out.println("sMin-1 = " + (short)(sMin - 1));
+			System.out.println("sMax = " + sMax);
+			System.out.println("sMax + 1 = " + (short)(sMax + 1));
+			System.out.println("cMin = " + (int)cMin);
+			System.out.println("cMin - 1 = " + (int)--cMin);
+			System.out.println("cMax = " + (int)cMax);
+			System.out.println("cMax + 1 = " + (int)++cMax);
+
+		}
+
+	}
+
+	/**
+	 * <h5>4.4 실수형 - float, double</h5><br>
+	 * <h6>실수형의 범우외 정밀도</h6><br>
+	 * 실수형은 실수를 저장하기 위한 타입으로 float와 double, 두 가지가 있다.
+	 * <table border="1">
+	 *     <thead>
+	 *         <th>타입</th>
+	 *         <th>저장 가능한 값의 범위(양수)</th>
+	 *         <th>정밀도</th>
+	 *         <th>크기</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>float</td>
+	 *             <td>1.4 x 10^-45 ~ 3.4 x 10^38</td>
+	 *             <td>7자리</td>
+	 *             <td>32bit(4byte)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>double</td>
+	 *             <td>4.9 x 10^-324 ~ 1.8 x 10^308</td>
+	 *             <td>15자리</td>
+	 *             <td>64bit(8byte)</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 */
+	class Memo13 {
+
+	}
+
 }
