@@ -3,7 +3,7 @@ package chapter07;
 /**
  * <h1>객체지향 프로그래밍 II</h1>
  */
-public class Chapter07 {
+public class Chapter7 {
 
 	/**
 	 * <h5>1. 상속(inheritance)</h5><br>

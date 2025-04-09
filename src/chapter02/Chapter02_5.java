@@ -32,8 +32,54 @@ public class Chapter02_5 {
 
 	/**
 	 * <h5>5.3 정수형간의 형변환</h5><br>
+	 * 큰 타입에서 작은 타입으로의 변환, int타입(4 byte)의 값을 byte타입(1 byte)으로 변환하는 경우 경우에 따라 '값 손실(loss of data)'이 발생할 수 있다.<br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <td>변환</td>
+	 *         <td>2진수</td>
+	 *         <td>10진수</td>
+	 *         <td>값손실</td>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>int -> byte</td>
+	 *             <td>
+	 *                 00000000 00000000 00000000 00001010<br>
+	 *                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00001010
+	 *             </td>
+	 *             <td>
+	 *                 10<br>
+	 *                 10
+	 *             </td>
+	 *             <td>없음</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int -> byte</td>
+	 *             <td>
+	 *                 00000000 00000000 00000001 00101100<br>
+	 *                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00101100
+	 *             </td>
+	 *             <td>
+	 *                 300<br>
+	 *                 44
+	 *             </td>
+	 *             <td>있음</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 반대로 작은 타입에서 큰 타입으로의 변환, 예를 들어서 byte타입(1 byte)의 값을 int타입(4 byte)으로 변환하는 경우는 저장공간의 부족으로 잘려나가는 일이 없으므로 값 손실이 발생하지 않는다.<br>
+	 * 나머지 빈공간은 0 또는 1로 채워진다.<br>
+	 * 원래의 값을 채우고 남은 빈공간은 0으로 채우는 게 보통이지만, 변환하려는 값이 음수인 경우에는 빈 공간을 1로 채운다.
 	 */
 	class Memo3 {
+	}
+
+	/**
+	 * <h5>5.4 실수형 간의 형변환</h5><br>
+	 */
+	class Memo4 {
+
 	}
 
 }
