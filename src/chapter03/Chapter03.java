@@ -11,7 +11,8 @@ public class Chapter03 {
 	 *     연산자는 '연산을 수행하는 기호'를 말한다.
 	 * </p>
 	 */
-	class Memo01{}
+	class Memo01 {
+	}
 
 	/**
 	 * <p>
@@ -23,7 +24,8 @@ public class Chapter03 {
 	 * 	 	<b>연산자는 피연산자로 연산을 수행하고 나면 항상 결과값을 반환한다.</b>
 	 * </p>
 	 */
-	class Memo02{}
+	class Memo02 {
+	}
 
 	/**
 	 * <p>
@@ -33,14 +35,47 @@ public class Chapter03 {
 	 * 		하나의 식을 평가(계산)하면, 단 하나의 결과를 얻는다.
 	 * </p>
 	 */
-	class Memo03{}
+	class Memo03 {
+	}
 
 	/**
-	 * <p>
-	 *     <h5>1.3 연산자의 종류</h5><br>
-	 *
-	 * </p>
+	 * <h5>1.3 연산자의 종류</h5><br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <th>종류</th>
+	 *         <th>연산자</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>산술 연산자</td>
+	 *             <td>+ - * / % << >></td>
+	 *             <td>사칙 연산(+, -, *, /)과 나머지 연산(%)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>비교 연산자</td>
+	 *             <td>> < >= <= == !=</td>
+	 *             <td>크고 작음과 같고 다름을 비교</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>논리 연산자</td>
+	 *             <td>&& !! ! * ! ^ ~</td>
+	 *             <td>'그리고(AND)'와 '또는(OR)'으로 조건을 연결</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>대입 연산자</td>
+	 *             <td>=</td>
+	 *             <td>우변의 값을 좌변에 저장</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>기타</td>
+	 *             <td>(type) ?: instanceof</td>
+	 *             <td>형변환 연산자, 삼항 연산자, instanceof연산자</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 */
-	class Memo04{}
+	class Memo04 {
+	}
 
 }
