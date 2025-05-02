@@ -205,4 +205,77 @@ public class Chapter7_4 {
 
 	}
 
+	/**
+	 * <h5>생성자의 접근 제어자</h5><br>
+	 * 생성자에 접근 제어자를 사용함으로써 인스턴스의 생성을 제한할 수 있다. 보통 생성자의 접근 제어자는 클래스의 접근 제어좌 같지만, 다르게 지정할 수도 있다.<br>
+	 * 생성자의 접근 제어자를 private으로 지정하면, 외부에서 생성자에 접근할 수 없으므로 인스턴스를 생성할 수 없게 된다. 그래도 클래스 내부에서는 인스턴스를 생성할 수 있다.<br>
+	 * 대신 인스턴스를 생성해서 반환해주는 public메서드를 제공함으로써 외부에서 이 클래스의 인스턴스를 사용하도록 할 수 있다.<br>
+	 * 이 메서드는 public인 동시에 static 이어야 한다.
+	 * <pre><code>
+	 *     class Singleton {
+	 *         ...
+	 *         private static Singleton s = new Singleton();
+	 *         private Singleton() {
+	 *           	...
+	 *         }
+	 *         // 인스턴스를 생성하지 않고도 호출할 수 있어야 하므로 static이어야 한다.
+	 *         public static Singleton getInstance() {
+	 *             return s;
+	 *         }
+	 *         ...
+	 *     }
+	 * </code></pre>
+	 * <br>
+	 * 이처럼 생성자를 통해 직접 인스턴스를 생성하지 못하게 하고 public메서드를 통해 인스턴스에 접근하게 함으로써 사용할 수 있는 인스턴스의 개수를 제한할 수 있다.<br>
+	 * 또  가지, 생성자아 private인 클래스는 다른 클래스의 조상이 될 수 없다. 왜냐하면, 자손클래스의 인스턴스를 생성할 때 조상클래스의 생성자를 호출해야만 하는데, 생성자의 접근 제어자가 private이므로 자손클래스에서 호출하는 것이 불가능하기 때문이다.<br>
+	 * 그래서 클래스 앞에 final을 추가하여 상속할 수 없는 클래스라는 것을 알리는 것이 좋다.
+	 */
+	class Memo8 {
+
+	}
+
+	/**
+	 * <h5>4.6 제어자(modifier)의 조합</h5>
+	 * <br>
+	 * <table border="1">
+	 *	<thead>
+	 *	    <th>대상</th>
+	 *	    <th>사용 가능한 제어자</th>
+	 *	</thead>
+	 *	<tbody>
+	 *	   <tr>
+	 *	       <td>클래스</td>
+	 *	       <td>public, (default), final, abstract</td>
+	 *	   </tr>
+	 *	   <tr>
+	 *	       <td>메서드</td>
+	 *	       <td>모든 접근 제어자, final ,abstract, static</td>
+	 *	   </tr>
+	 *	   <tr>
+	 *	       <td>멤버변수</td>
+	 *	       <td>모든 접근 제어자, final, static</td>
+	 *	   </tr>
+	 *	   <tr>
+	 *	       <td>지역변수</td>
+	 *	       <td>final</td>
+	 *	   </tr>
+	 *	</tbody>
+	 * </table>
+	 * <br>
+	 * 제어자를 조합해서 사용할 때 주의해야 할 사항
+	 * <pre><code>
+	 *     1. 메서드에 static과 abstract를 함께 사용할 수 없다.
+	 *     static메서드는 몸통이 있는 메서드에만 사용할 수 있기 때문이다.
+	 *     2. 클래스에 abstract와 final을 동시에 사용할 수 없다.
+	 *     클래스에 사용되는 final은 클래스를 확장할 수 없다는 의미이고 abstract는 상속을 통해서 완성되어야 한다는 의미이므로 서로 모순되기 때문이다.
+	 *     3. abstract메서드의 접근 제어자가 private일 수 없다.
+	 *     abstract메서드는 자손클래스에서 구현해주어야 하는데 접근 제어자가 private이면, 자손클래스에서 접근할 수 없기 때문이다.
+	 *     4. 메서드에 private과 final을 같이 사용할 필요는 없다.
+	 *     접근 제어자가 private인 메서드는 오버라이딩될 수 없기 때문이다. 이 둘 중 하나만 사용해도 의미가 충분하다.
+	 * </code></pre>
+	 */
+	class Memo9 {
+
+	}
+
 }
