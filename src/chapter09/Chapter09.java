@@ -9,6 +9,87 @@ package chapter09;
 public class Chapter09 {
 
 	/**
+	 * <h5>1.1 Object클래스</h5><br>
+	 * Object클래스는 모든 클래스의 최고 조상이기 때문에 Object클래스의 멤버들은 모든 클래스에서 바로 사용 가능하다.<br>
+	 * <b>Object클래스의 메서드</b><br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <th>Object클래스의 메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>protected Object clone()</td>
+	 *             <td>객체 자신의 복사본을 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>public boolean equals(Object obj)</td>
+	 *             <td>객체 자신과 객체 obj가 같은 객체인지 알려준다.(같으면 true)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>protected void finalize()</td>
+	 *             <td>객체가 소멸될 때 가비지 컬렉터에 의해 자동적으로 호출된다. 이 때 수행되어야하는 코드가 있을 때 오버라이딩한다.(거의 사용안함)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>public Class getClass()</td>
+	 *             <td>객체 자신의 클래스 정보를 담고 있는 Class인스턴스를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>public int hashCode()</td>
+	 *             <td>객체 자신의 해시코드를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>public String toString()</td>
+	 *             <td>객체 자신의 정보를 문자열로 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>public void notify()</td>
+	 *             <td>객체 자신을 사용하려고 기다리는 쓰레드를 하나만 깨운다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>public void notifyAll()</td>
+	 *             <td>객체 자신을 사용하려고 기다리는 모든 쓰레드를 깨운다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 public void wait()<br>
+	 *                 public void wait(long timeout)<br>
+	 *                 public void wait(long timeout, int nanos)
+	 *             </td>
+	 *             <td>다른 쓰레드가 notify()나 notifyAll()을 호출할 때까지 현재 쓰레드를 무한히 또는 지정된 시간(timeout, nanos)동안 기다리게 한다.(timeout은 천 분의 1초, nanos는 10<sup>9</sup>분의 1초</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * Object클래스는 멤버변수는 없고 오직 11개의 메서드만 가지고 있다. 이 메서드들은 모든 인스턴스가 가져야 할 기본적인 것들이며, 우선 이 중에서 중요한 몇 가지만 살펴보자.
+	 */
+	class Memo1 {
+
+	}
+
+	/**
+	 * <h5>equals(Object obj)</h5><br>
+	 * 매개변수로 객체의 참조변수를 받아서 비교하여 그 결과를 boolean값으로 알려 주는 역할을 한다.<br>
+	 * 두 객체의 같고 다름을 참조변수의 값으로 판단한다. 그렇기 때문에 서로 다른 두 개겣를 equals메서드로 비교하면 항상 false를 결과로 얻게 된다.<br>
+	 * <small>※ 객체를 생성할 때, 메모리의 비어있는 공간을 찾아 생성하므로 서로 다른 두 개의 객체가 같은 주소를 갖는 일은 있을 수 없다. 두 개 이상의 참조변수가 같은 주소값을 갖는 것(한 객체를 참조하는 것)은 가능하다.</small><br>
+	 * Object클래스로부터 상속받은 equals메서드는 결국 두 개의 참조변수가 같은 객체를 참조하고 있는지, 즉 두 참조변수에 저장된 값(주소값)이 같은지를 판단하는 기능밖에 할 수 없다는 것을 알 수 있다.<br>
+	 * equals메서드로 Value인스턴스가 가지고 있는 value값을 비교하도록 할 수는 없을까? Value클래스에서 equals메서드를 오버라이딩하여 주소가 아닌 객체에 저장된 내용을 비교하도록 변경하면 된다.<br>
+	 * String클래스 역시 Object클래스의 equals메서드를 그대로 사용하는 것이 아니라 오버라이딩을 통해서 String인스턴스가 갖는 문자열 값을 비교하도록 되어있다.<br>
+	 * 그렇기 때문에 같은 내용의 문자열을 갖는 두 String인스턴스에 equals메서드를 사용하면 항상 true값을 얻는 것이다.<br>
+	 * <small>※ String클래스뿐만 아니라, Date, File, wrapper클래스(Integer, Double 등)의 equals메서드도 주소값이 아닌 내용을 비교하도록 오버라이딩되어 있다. 그러나 의외로 StringBuilder클래스는 오버라이딩되어 있지 않다.</small>
+	 */
+	class Memo2 {
+
+	}
+
+	/**
+	 * <h5>hashCode()</h5><br>
+	 */
+	class Memo3 {
+
+	}
+
+	/**
 	 * <h5>1.3 StringBuffer클래스와 StringBuilder클래스</h5><br>
 	 * String클래스는 인스턴스를 생성할 때 저장된 문자열을 변경할 수 없지만 StringBuffer클래스는 변경이 가능하다.<br>
 	 * 내부적으로 문자열 편집을 위한 버퍼(buffer)를 가지고 있으며, StringBuffer인스턴스를 생성할 때 그 크기를 지정할 수 있다.<br>
