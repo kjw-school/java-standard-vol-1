@@ -84,8 +84,41 @@ public class Chapter09 {
 
 	/**
 	 * <h5>hashCode()</h5><br>
+	 * 이 메서드는 해싱(hashing)기법에 사용되는 '해시함수(hash function)'를 구현한 것이다.<br>
+	 * 해싱은 데이터관리기법 중의 하나인데 다량의 데이터를 저장하고 검색하는 데 유용하다.<br>
+	 * 해시함수는 찾고자하는 값을 입력하면, 그 값이 저장된 위치를 알려주는 해시코드(hash code)를 반환한다.<br>
+	 * 일반적으로 해시코드가 같은 두 객체가 존재하는 것이 가능하지만, Object클래스에 정의된 hashCode메서드는 객체의 주소값으로 해시코드를 만들어 반환하기 때문에 32 bit JVM에서는 서로 다른 두 객체는 결코 같은 해시코드를 가질 수 없엇지만,<br>
+	 * 64 bit JVM에서는 8 byte 주소값으로 해시코드(4 byte)를 만들기 때문에 해시코드가 중복될 수 있다.<br>
+	 * <small>※해싱기법을 사용하는 HashMap이나 HashSet과 같은 클래스에 저장할 객체라면 반드시 hashCode메서드를 오버라이딩해야 한다.</small> <br>
+	 * String클래스는 문자열의 내용이 같으면, 동일한 해시코드를 반환하도록 hashCode메서드가 오버라이딩되어 있기 때문에, 문자열의 내용이 같은 객체에 대해 hashCode()를 호출하면 항상 돌일한 해시코드값을 얻는다.<br>
+	 * 반면에 System.identityHashCode(Object x)는 Object클래스의 hashCode()메서드처럼 객체의 주소값으로 해시코드를 생성하기 때문에 모든 객체에 대해 항상 다른 해시코드값을 반환할 것을 보장한다.<br>
+	 * <small>※System.identityHashCode(Object x)의 호출결과는 실행 할 때마다 달라질 수 있다.</small>
 	 */
 	class Memo3 {
+
+	}
+
+	/**
+	 * <h5>toString()</h5><br>
+	 * 이 메서드는 인스턴스에 대한 정보를 문자열(String)로 제공할 목적으로 정의한 것이다.<br>
+	 * 인스턴스의 정보를 제공한다는 것은 대부분의 경우 인스턴스 변수에 저장된 값들을 문자열로 표현한다는 뜻이다.<br>
+	 * <pre><code>
+	 *     public String toString() {
+	 *         return getClass().getName()+"@"+Integer.toHexString(hashCode());
+	 *     }
+	 * </code></pre>
+	 * <br>
+	 * toString()을 호출하면 클래스이름에 16진수의 해시코드를 얻게 될 것이다.<br>
+	 * <small>※getClass()와 hashCode() 역시 Object클래스에 정의된 것이므로 인스턴스 생성없이 바로 호출할 수 있다.</small>
+	 */
+	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>clone()</h5><br>
+	 */
+	class Memo5 {
 
 	}
 
