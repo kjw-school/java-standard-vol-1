@@ -17,9 +17,52 @@ public class Chapter7_7 {
 	}
 
 	/**
-	 * <h5>7.2 인터페이스의 작성</h5>
+	 * <h5>7.2 인터페이스의 작성</h5><br>
+	 * 인터페이스를 작성하는 것은 클래스를 작성하는 것과 같다. 다만 키워드로 class 대신 interface를 사용한다는 것만 다르다. 그리고 interface에도 클래스와 같이 접근제어자로 public 또는 default를 사용할 수 있다.<br>
+	 * <pre><code>
+	 *     interface 인터페이스이름 {
+	 *         public static final 타입 상수이름 = 값;
+	 *         public abstract 메서드이름(매개변수목록);
+	 *     }
+	 * </code></pre><br>
+	 * - 모든 멤버변수는 public static final 이어야 하며, 이를 생략할 수 있다.<br>
+	 * - 모든 메서드는 public abstract 이어야 하며, 이를 생략할 수 있다.단, static메서드와 디폴트 메서드는 예외(JDK1.8부터)<br>
+	 * 인터페이스에 정의된 모든 멤버에 예외없이 적용되는 사항이기 때문에 제어자를 생략할 수 있는 것이며, 편의상 생략하는 경우가 많다. 생략된 제어자는 컴파일 시에 컴파일러가 자동적으로 추가해준다.<br>
+	 * 원래는 인터페이스의 모든 메서드는 추상메서드이어야 하는데, JDK1.8부터 인터페이스에 static메서드와 디폴트 메서드(defaule method)의 추가를 허용하는 방향으로 변경되었다.<br>
 	 */
 	class Memo2 {
+
+	}
+
+	/**
+	 * <h5>7.3 인터페이스의 상속</h5><br>
+	 * 인터페이스는 인터페이스로부터만 상속받을 수 있으며, 클래스와는 달리 다중상속, 즉 여러 개의 인터페이스로부터 상속을 받는 것이 가능하다.<br.
+	 * <small>※인터페이스는 클래스와 달리 Object클래스와 같은 최고 조상이 없다.</small><br>
+	 * <pre><code>
+	 *     interface Movable {
+	 *         // 지정된 위치(x, y)로 이동하는 기능의 메서드
+	 *         void move(int x, int y);
+	 *     }
+	 *
+	 *     interface Attackable {
+	 *         // 지정된 대상(u)을 공격하는 기능의 메서드
+	 *         void attack(Unit u);
+	 *     }
+	 *
+	 *     interface Fightable extends Movable, Attackable {}
+	 * </code></pre>
+	 * 클래스의 상속과 마찬가지로 자손 인터페이스(Fightable)는 조상 인터페이스(Movable, Attackable)의 모든 정의된 멤버를 모두 상속받는다.
+	 */
+	class Memo3 {
+
+	}
+
+	/**
+	 * <h5>7.4 인터페이스의 구현</h5><br>
+	 * 인터페이스도 추상클래스처럼 그 자체로는 인스턴스를 생성할 수 없으며, 추상클래스가 상속을 통해 추상메서드를 완성하는 것처럼, 인터페이스도 자신에 정의된 추상메서드의 몸통을 만들어주는 클래스를 작성해야 하는데,<br>
+	 * 그 방법은 추상클래스가 자신을 상속받는 클래스를 정의하는 것과 다르지 않다. 다만 클래스는 확장한다는 의미의 키워드 'extends'를 사용하지만 인터페이스는 구현한다는 의미의 키워드 'implements'를 사용할 뿐이다.
+	 */
+	class Memo4 {
 
 	}
 
