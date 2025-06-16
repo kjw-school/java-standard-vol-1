@@ -3,7 +3,7 @@ package chapter07;
 /**
  * <h1>3. package와 import</h1>
  */
-public class Chapter7_3 {
+public class Chapter07_3 {
 
 	/**
 	 * <h5>3.1 패키지(package)</h5><br>

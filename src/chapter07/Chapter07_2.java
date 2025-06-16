@@ -3,7 +3,7 @@ package chapter07;
 /**
  * <h1>2. 오버라이딩(overriding)</h1>
  */
-public class Chapter7_2 {
+public class Chapter07_2 {
 
 	/**
 	 * <h5>2.1 오버라이딩이란?</h5><br>

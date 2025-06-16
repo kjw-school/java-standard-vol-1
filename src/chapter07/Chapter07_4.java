@@ -3,7 +3,7 @@ package chapter07;
 /**
  * <h1>4. 제어자(modifier)</h1>
  */
-public class Chapter7_4 {
+public class Chapter07_4 {
 
 	/**
 	 * <h5>4.1 제어자란?</h5><br>

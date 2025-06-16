@@ -3,7 +3,7 @@ package chapter07;
 /**
  * <h1>6. 추상클래스(abstract class)</h1>
  */
-public class Chapter7_6 {
+public class Chapter07_6 {
 
 	/**
 	 * <h5>6.1 추상클래스란?</h5><br>
