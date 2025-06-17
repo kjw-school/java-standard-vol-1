@@ -83,12 +83,12 @@ public class Chapter07 {
 	}
 
 	/**
-	 * <code>
-	 *     class Circle {<br>
-	 *         Point c = new Point(); // 원점<br>
-	 *         int r;<br>
+	 * <pre><code>
+	 *     class Circle {
+	 *         Point c = new Point(); // 원점
+	 *         int r;
 	 *     }
-	 * </code>
+	 * </code></pre>
 	 */
 	class Point {
 		int x;
@@ -97,18 +97,16 @@ public class Chapter07 {
 
 	/**
 	 * <h5>1.3 클래스간의 관계 결정하기</h5><br>
-	 * <code>
-	 *     class Circle {<br>
-	 *         Point c = new Point();<br>
-	 *         int r;<br>
+	 * <pre><code>
+	 *     class Circle {
+	 *         Point c = new Point();
+	 *         int r;
 	 *     }
-	 * </code>
+	 * </code></pre>
 	 * <br>
-	 * <code>
-	 *     class Circle <b>extends Point</b>q{<br>
-	 *         <br>
-	 *     }
-	 * </code>
+	 * <pre><code>
+	 *     class Circle extends Point{ }
+	 * </code></pre>
 	 * <br>
 	 * 원(Circle)은 점(Point)<b>이다.</b> - Circle <b>is a</b> Point(상속)<br>
 	 * 원(Circle)은 점(Point)을 <b>가지고 있다.</b> - Circle <b>has a</b> Point(포함)<br>
