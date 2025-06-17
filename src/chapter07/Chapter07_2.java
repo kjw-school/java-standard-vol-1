@@ -27,14 +27,12 @@ public class Chapter07_2 {
 	 * 만일 조상 클래스에 정의된 메서드와 접근 제어자가 protected라면, 이를 오버라이딩하는 자손 클래스의 메서드는 접근 제어자가 protected나 public이어야 한다. 대부분의 경우 같은 범위의 접근 제어자를 사용한다.<br>
 	 * 접근 제어자의 접근 범위를 넓은 것에서 좁은 것 순으로 나열하면 public, protected, (default), private이다.<br.
 	 * <b>2. 조상 클래스의 메서드보다 많은 수의 예외를 선언할 수 없다.</b><br>
-	 * <code>
-	 *     class Child extends Parent {<br>
-	 *     &nbsp;&nbsp;void parentMethod() throws Exception {<br>
-	 *     &nbsp;&nbsp;&nbsp;...<br>
-	 *     &nbsp;&nbsp;}<br>
-	 *     &nbsp;...<br>
-	 *     }
-	 * </code>
+	 * <pre><code>
+	 * class Child extends Parent {
+	 *  void parentMethod() throws Exception {...}
+	 *  ...
+	 * }
+	 * </pre></code>
 	 * 여기서 주의해야할 점은 단순히 선언된 예외의 개수의 문제가 아니라는 것이다. 만일 위와 같이 오버라이딩을 하였다면,분명히 조상클래스에 정의된 메서드보다 적은 개수의 예외를<br>
 	 * 선언한 것처럼 보이지만, Exception은 모든 예외의 최고 조상이므로 가장 많은 개수의 예외를 던질 수 있도록 선언한 것이다.<br>
 	 * 조상 클래스의 메서드를 자손 클래스에서 오버라이딩할 때<br>
