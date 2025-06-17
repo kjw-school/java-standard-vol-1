@@ -25,7 +25,7 @@ public class Chapter07_2 {
 	 * 한마디로 요약하면, 선언부가 서로 일치해야 한다는 것이다. 다만 접근 제어자(access modifier)와 예외(exception)는 제한된 조건 하에서만 다르게 변경할 수 있다.<br>
 	 * <b>1. 접근 제어자는 조상 클래스의 메서드보다 좁은 범위로 변경할 수 없다.</b><br>
 	 * 만일 조상 클래스에 정의된 메서드와 접근 제어자가 protected라면, 이를 오버라이딩하는 자손 클래스의 메서드는 접근 제어자가 protected나 public이어야 한다. 대부분의 경우 같은 범위의 접근 제어자를 사용한다.<br>
-	 * 접근 제어자의 접근 범위를 넓은 것에서 좁은 것 순으로 나열하면 public, protected, (default), private이다.<br.
+	 * 접근 제어자의 접근 범위를 넓은 것에서 좁은 것 순으로 나열하면 public, protected, (default), private이다.<br>
 	 * <b>2. 조상 클래스의 메서드보다 많은 수의 예외를 선언할 수 없다.</b><br>
 	 * <pre><code>
 	 * class Child extends Parent {
