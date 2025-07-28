@@ -88,8 +88,49 @@ public class Chapter08 {
 
 	/**
 	 * <h5>1.4 try-catch문에서의 흐름</h5><br>
+	 * <pre><code>
+	 *     ▶ try블럭 내에서 예외가 발생한 경우,
+	 *     1. 발생한 예외와 일치하는 catch블럭이 있는지 확인한다.
+	 *     2. 일치하는 catch블럭을 찾게 되면, 그 catch블럭 내의 문장들을 수행하고 전체 try-catch문을 빠져나가서 그 다음 문장을 계속해서 수행한다. 만일 일치하는 catch블럭을 찾지 못하면, 예외는 처리되지 못한다.
+	 *     ▶ try블럭 내에서 예외가 발생하지 않은 경우,
+	 *     1. catch블럭을 거치지 않고 전체 try-catch문을 빠져나가서 수행을 계속한다.
+	 * </code></pre>
 	 */
 	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>1.5 예외의 발생과 catch블럭</h5><br>
+	 * catch블럭은 괄호()와 블럭{} 두 부분으로 나눠져 있는데, 괄호()내에는 처리하고자 하는 예외와 같은 타입의 참조변수 하나를 선언해야한다.<br>
+	 * 예외가 발생하면, 발생한 예외에 해당하는 클래스의 인스턴스가 만들어진다.<br>
+	 * catch블럭의 괄호()내에 선언된 참조변수의 종류와 생성된 예외클래스의 인스턴스에 instanceof연산자를 이용해서 검사하게 되는데, 검사결과가 true인 catch블럭을 만날 때까지 검사는 계속된다.<br>
+	 * 검사결과가 true인 catch블럭을 찾게 되면 블럭에 있는 문장들을 모두 수행한 후에 try-catch문을 빠져나가고 에외는 처리되지만, 검사결과가 true인 catch블럭이 하나도 없으면 예외는 처리되지 않는다.<br>
+	 * 모든 예외 클래스는 Exception클래스의 자손이므로, catch블럭의 괄호()에 Exception클래스 타입의 참조변수를 선언해 놓으면 어떤 종류의 예외가 발생하더라도 이 catch블럭에 의해서 처리된다.
+	 */
+	class Memo5 {
+
+	}
+
+	/**
+	 * <h5>printStackTrace()와 getMessage()</h5><br>
+	 * 예외가 발생했을 때 생성되는 예외 클래스의 인스턴스에는 발생한 예외에 대한 정보가 담겨 있으며, getMessage()와 printStackTrace()를 통해서 이 정보들을 얻을 수 있다.<br>
+	 * catch블럭의 괄호()에 선언된 참조변수를 통해 이 인스턴스에 접근할 수 있다.<br>
+	 * <pre><code>
+	 *     printStaceTrace() - 예외발생 당시의 호출스택(Call Stack)에 있었던 메서드의 정보와 예외 메세지를 화면에 출력한다.
+	 *     getMessage() - 발생한 예외클래스의 인스턴스에 저장된 메세지를 얻을 수 있다.
+	 * </code></pre>
+	 * <br>
+	 * <small>※printStackTrace(PrintStream s) 또는 printStackTrace(PrintWriter s)를 사용하면 발생한 예외에 대한 정보를 파일에 저장할 수도 있다.</small>
+	 */
+	class Memo6 {
+
+	}
+
+	/**
+	 * <h5>멀티 catch블럭</h5>
+	 */
+	class Memo7 {
 
 	}
 
