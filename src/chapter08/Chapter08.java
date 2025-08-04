@@ -128,9 +128,55 @@ public class Chapter08 {
 	}
 
 	/**
-	 * <h5>멀티 catch블럭</h5>
+	 * <h5>멀티 catch블럭</h5><br>
+	 * JDK1.7부터 여러 catch블럭을 '|'기호를 이용해서, 하나의 catch블럭으로 합칠 수 있게 되었으며, 이를 '멀티 catch블럭'이라고 한다.<br>
+	 * '|' 기호로 연결할 수 있는 예외 클래스의 개수에는 제한이 없다.<br>
+	 * <small>※ 멀티 catch블럭에 사용되는 '|'는 논리 연산자가 아니라 기호이다.</small>
+	 * <pre><code>
+	 *     try {
+	 *         ...
+	 *     } catch(ExceptionA e) {
+	 *         e.printStackTrace();
+	 *     } catch(ExceptionB e2) {
+	 *         e2.printStackTrace();
+	 *     }
+	 *     ↓
+	 *     try {
+	 *         ...
+	 *     } catch(ExceptionA | ExceptionB e) {
+	 *         e.printStackTrace();
+	 *     }
+	 * </code></pre>
+	 * <br>
+	 * 만일 멀티 catch블럭의 '|'기호로 연결된 예외 클래스가 조상과 자손의 관계에 있다면 컴파일 에러가 발생한다.<br>
+	 * 왜냐하면, 두 예외 클래스가 조상과 자손의 관계에 있다면, 그냥 조상 클래스만 써주는 것과 똑같기 때문이다. 불필요한 코드는 제거하라는 의미에서 에러가 발생하는 것이다.<br>
+	 * 멀티 catch는 하나의 catch블럭으로 여러 예외를 처리하는 것이기 때문에, 발생한 예외를 멀티 catch블럭으로 처리하게 되었을 때, 멀티 catch블럭 내에서는 실제로 어떤 예외가 발생한 것인지 알 수 없다.<br>
+	 * 그래서 참조변수 e로 멀티 catch블럭에 '|'기호로 연결된 예외 클래스들의 공통 분모인 조상 예외 클래스에 선언된 멤버만 사용할 수 있다.
 	 */
 	class Memo7 {
+
+	}
+
+	/**
+	 * <h5>1.6 예외 발생시키기</h5><br>
+	 * 키워드 throw를 사용해서 프로그래머가 고의로 예외를 발생시킬 수 있다.<br>
+	 * <pre><code>
+	 *     1. 먼저, 연산자 new를 이용해서 발생시키려는 예외 클래스들의 객체를 만든 다음
+	 *     Exception e = new Exception("고의로 발생시켰음");
+	 *     2. 키워드 throw를 이용해서 예외를 발생시킨다.
+	 *     throw e;
+	 * </code></pre>
+	 * <br>
+	 * 컴파일러가 예외처리를 확인하지 않는 RuntimeException클래스들은 'unchecked예외'라고 부르며, 예외처리를 확인하는 Exception클래스들은 'checked예외'라고 부른다.
+	 */
+	class Memo8 {
+
+	}
+
+	/**
+	 * <h5>1.7 메서드에 예외 선언하기</h5>
+	 */
+	class Memo9 {
 
 	}
 
