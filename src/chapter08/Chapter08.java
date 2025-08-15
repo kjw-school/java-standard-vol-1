@@ -217,4 +217,47 @@ public class Chapter08 {
 
 	}
 
+	/**
+	 * <h5>1.9 자동 자원 반환 - try - with - resources문</h5><br>
+	 * JDK1.7부터 try - with - resources문이라는 try - catch 문의 변형이 새로 추가되었다.<br>
+	 * 주로 입출력에 사용되는 클래스 중에서는 사용한 후에 꼭 닫아 줘야 하는 것들이 있다. 그래야 사용했던 자원(resources)이 반환되기 때문이다.<br>
+	 * try - with - resources문의 괄호()안에 객체를 생성하는 문장을 넣으면, 이 객체는 따로 close()를 호출하지 않아도 try블럭을 벗어나는 순간 자동적으로 close()가 호출된다.<br>
+	 * 그 다음에 catch블럭 또는 finally블럭이 수행된다.<br>
+	 * <small>※ try블럭의 괄호()안에 변수를 선언하는 것도 가능하며, 선언된 변수는 try블럭 내에서만 사용할 수 있다.</small><br>
+	 * 이처럼 try - with - resources문에 의해 자동으로 객체의 close()가 호출될 수 있으려면, 클래스가 AutoCloseable이라는 인터페이스를 구현한 것이어야만 한다.<br>
+	 * Throwable에는 억제된 예외와 관련된 다음과 같은 메서드가 정의되어 있다.<br>
+	 * <pre><code>
+	 *     void addSuppressed(Throwable exception) - 억제된 예외를 추가
+	 *     Throwable[] getSuppressed() - 억제된 예외(배열)를 반환
+	 * </code></pre>
+	 */
+	class Memo11 {
+
+	}
+
+	/**
+	 * <h5>1.10 사용자정의 예외 만들기</h5><br>
+	 * 기존의 정의된 예외 클래스 외에 필요에 따라 프로그래머가 새로운 예외 클래스를 정의하여 사용할 수 있다.<br>
+	 * 보통 Exception클래스 또는 RuntimeException클래스로부터 상속받아 클래스를 만들지만, 필요에 따라서 알맞은 예외 클래스를 선택할 수 있다.<br>
+	 * <pre><code>
+	 *     class MyException extends Exception {
+	 *         MyException(String msg) {
+	 *             super(msg); // 조상인 Exception클래스의 생성자를 호출한다.
+	 *         }
+	 *     }
+	 * </code></pre><br>
+	 * 기존의 예외 클래스는 주로 Exception을 상속받아서 'checked예외'로 작성하는 경우가 많았지만, 요즘은 예외처리를 선택적으로 할 수 있도록 RuntimeException을 상속받아서 작성하는 쪽으로 바뀌어가고 있다.<br>
+	 * 'checked예외'는 반드시 예외처리를 해주어야 하기 때문에 예외처리가 불필요한 경우에도 try - catch 문을 넣어서 코드가 복잡해지기 때문이다.
+	 */
+	class Memo12 {
+
+	}
+
+	/**
+	 * <h5>1.11 예외 되던지기(exception re-throwing)</h5><br>
+	 */
+	class Memo13 {
+
+	}
+
 }
