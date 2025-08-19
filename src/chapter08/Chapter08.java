@@ -255,8 +255,34 @@ public class Chapter08 {
 
 	/**
 	 * <h5>1.11 예외 되던지기(exception re-throwing)</h5><br>
+	 * 한 메서드에서 발생할 수 있는 예외가 여럿인 경우, 몇 개는 try-catch문을 통해서 메서드 내에서 자체적으로 처리하고,<br>
+	 * 그 나머지는 선언부에 지정하여 호출한 메서드에서 처리하도록 함으로써, 양쪽에서 나눠서 처리되도록 할 수 있다.<br>
+	 * 단 하나의 예외에 대해서도 예외가 발생한 메서드와 호출한 메서드, 양쪽에서 처리하도록 할 수 있다.<br>
+	 * 예외를 처리한 후에 인위적으로 다시 발생시키는 방법을 통해서 가능한데, 이것을 '예외 되던지기(exception re-throwing)'라고 한다.<br>
+	 * 먼저 예외가 발생할 가능성이 있는 메서드에서 try-catch문을 사용해서 예외를 처리해주고 catch문에서 필요한 작업을 행한 후에 throw문을 사용해서 예외를 다시 발생시킨다.<br>
+	 * 주의할 점은 예외가 발생할 메서드에서는 try-catch문을 사용해서 예외처리를 해줌과 동시에 메서드의 선언부에 발생할 예외를 throws에 지정해줘야 한다는 것이다.<br>
+	 * 반환값이 있는 return문의 경우, catch블럭에도 return문이 있어야 한다. 예외가 발생했을 경우에도 값을 반환해야하기 때문이다.<br>
+	 * catch블럭에서 예외 되던지기를 해서 호출한 메서드로 예외를 전달하면, return문이 없어도 된다.<br>
+	 * <small>※ finally블럭 내에도 return문을 사용할 수 있으며, try블럭이나 catch블럭의 return문 다음에 수행된다. 최종적으로 finally블럭 내의 return문의 값이 반환된다.</small>
 	 */
 	class Memo13 {
+
+	}
+
+	/**
+	 * <h5>1.12 연결된 예외(chained exception)</h5><br>
+	 * 한 예외가 다른 예외를 발생시킬 수도 있다. 예를 들어 예외 A가 예외 B를 발생시켰다면, A를 B의 '원인 예외(cause exception)'라고 한다.<br>
+	 * <pre><code>
+	 *     Throwable initCause(Throwable cause) - 지정한 예외를 원인 예외로 등록
+	 *     Throwable getCause() - 원인 예외를 반환
+	 * </code></pre>
+	 * <br>
+	 * checked예외를 unchecked예외로 바꿀 수 있또록 하기 위해서이다.<br>
+	 * checked예외로 예외처리를 강제한 이유는 프로그래밍 경험이 적은 사람도 보다 견고한 프로그램을 작성할 수 있도록 유도하기 위한 것이었다.<br>
+	 * checked예외가 발생해도 예외를 처리할 수 없는 상황이 하나둘 발생하기 시작했다.<br>
+	 * 이럴 때 할 수 있는 일이라곤 그저 의미없는 try-catch문을 추가하는 것뿐인데, checked예외를 unchecked예외로 바꾸면 예외처리가 선택적이 되므로 억지로 예외처리를 하지 않아도 된다.
+	 */
+	class Memo14 {
 
 	}
 

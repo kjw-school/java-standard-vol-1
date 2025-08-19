@@ -179,9 +179,60 @@ public class Chapter09 {
 
 	/**
 	 * <h5>Class객체를 얻는 방법</h5><br>
-	 *
+	 * 클래스의 정보가 필요할 때, 먼저 Class객체에 대한 참조를 얻어 와야 하는데, 해당 Class객체에 대한 참조를 얻는 방법은 여러 가지가 있다.<br>
+	 * <pre><code>
+	 *     Class cObj = new Card().getClass(); // 생성된 객체로 부터 얻는 방법
+	 *     Class cObj = Card.class; // 클래스 리터럴(*.class)로 부터 얻는 방법
+	 *     Class cObj = Class.forName("Card"); // 클래스 이름으로 부터 얻는 방법
+	 * </code></pre>
+	 * <br>
+	 * 특히 forName()은 특정 클래스 파일, 예를 들어 데이터베이스 드라이버를 메모리에 올릴 때 주로 사용한다.<br>
+	 * Class객체를 이용하면 클래스에 정의된 멤버의 이름이나 개수 등, 클래스에 대한 모든 정보를 얻을 수 있기 때문에 Class객체를 통해서 객체를 생성하고 메서드를 호출하는 등 보다 동적인 코드를 작성할 수 있다.<br>
+	 * <pre><code>
+	 *     Card c = new Card(); // new연산자를 이용해서 객체 생성
+	 *     Card c = Card.class.newInstance(); // Class객체를 이용해서 객체 생성
+	 * </code></pre>
+	 * <br>
+	 * <small>※ newInstance()는 InstantiationException이 발생할 수 있으므로 예외처리가 필요하다.</small><br>
+	 * 동적으로 객체를 생성하고 메서드를 호출하는 방법에 대해 더 알고 싶다면, '리플렉션 API(reflection API)'로 검색하면 된다.
 	 */
 	class Memo9 {
+
+	}
+
+	/**
+	 * <h5>1.2 String클래스</h5><br>
+	 * 기존의 다른 언어에서는 문자열을 char형의 배열로 다루었으나 자바에서는 문자열을 위한 클래스를 제공한다.<br>
+	 * 그것이 바로 String클래스인데, String클래스는 문자열을 저장하고 이를 다루는데 필요한 메서드를 함께 제공한다.
+	 */
+	class Memo10 {
+
+	}
+
+	/**
+	 * <h5>변경 불가능한(immutable) 클래스</h5><br>
+	 * String클래스에는 문자열을 저장하기 위해서 문자형 배열 참조변수(char[]) value를 인스턴스 변수로 정의해놓고 있다.<br>
+	 * 인스턴스 생성 시 생성자의 매개변수로 입력받는 문자열은 이 인스턴스변수(value)에 문자형 배열(char[])로 저장되는 것이다.<br>
+	 * <small>※ String클래스는 앞에 final이 붙어 있으므로 다른 클래스의 조상이 될 수 없다.</small><br>
+	 * 한번 생성된 String인스턴스가 갖고 있는 문자열은 읽어 올 수만 있고, 변경할 수는 없다.<br>
+	 * 예를 들어 아래의 코드와 같이 '+'연산자를 이용해서 문자열을 결합하는 경우 인스턴스 내의 문자열이 바뀌는 것이 아니라 새로운 문자열("ab")이 담긴 String인스턴스가 생성되는 것이다.
+	 * <pre><code>
+	 *     String a = "a";
+	 *     String b = "b";
+	 *            a = a + b;
+	 * </code></pre>
+	 * <br>
+	 * 문자열간의 결합이나 추출 등 문자열을 다루는 작업이 많이 필요한 경우에는 String클래스 대신 StringBuffer클래스를 사용하는 것이 좋다.<br>
+	 * StringBuffer인스턴스에 저장된 문자열은 변경이 가능하므로 하나의 StringBuffer인스턴스만으로도 문자열을 다루는 것이 가능하다.
+	 */
+	class Memo11 {
+
+	}
+
+	/**
+	 * <h5>문자열의 비교</h5><br>
+	 */
+	class Memo12 {
 
 	}
 
