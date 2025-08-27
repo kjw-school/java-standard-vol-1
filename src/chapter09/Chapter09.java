@@ -231,8 +231,107 @@ public class Chapter09 {
 
 	/**
 	 * <h5>문자열의 비교</h5><br>
+	 * String클래스의 생성자를 이용한 경우에는 new연산자에 의해서 메모리할당이 이루어지기 때문에 항상 새로운 String인스턴스가 생성된다.<br>
+	 * 문자열 리터럴은 이미 존재하는 것을 재사용하는 것이다.<br>
+	 * <small>※ 문자열 리터럴은 클래스가 메모리에 로드될 때 자동적으로 미리 생성된다.</small>
 	 */
 	class Memo12 {
+
+	}
+
+	/**
+	 * <h5>문자열 리터럴</h5><br>
+	 * 자바 소스파일에 포함된 모든 문자열 리터럴은 컴파일 시에 클래스 파일에 저장된다. 이 때 같은 내용의 문자열 리터럴은 한번만 저장된다.<br>
+	 * 문자열 리터럴도 String인스턴스이고, 한번 생성하면 내용을 변경할 수 없으니 하나의 인스턴스를 공유하면 되기 때문이다.<br>
+	 * String리터럴들은 컴파일시에 클래스파일에 저장된다.<br>
+	 * 클래스 파일에는 소스파일에 포함된 모든 리터럴의 목록이 있다. 해당 클래스 파일이 클래스 로더에 의해 메모리에 올라갈 때, 이 리터럴의 목록에 있는 리터럴들이 JVM내에 있는 '상수 저장소(constant pool)'에 저장된다.
+	 */
+	class Memo13 {
+
+	}
+
+	/**
+	 * <h5>빈 문자열(empty string)</h5><br>
+	 * 길이가 0인 배열이 존재할 수 있을까? 답은 'Yes'이다. char형 배열도 길이가 0인 배열을 생성할 수 있고, 이 배열을 내부적으로 가지고 잇는 문자열이 바로 빈 문자열이다.<br>
+	 * 'String s = ""'와 같은 문장이 있을 때, 참조변수 s가 참조하고 있는 String인스턴스는 내부에 'new char[0]'과 같이 길이가 0인 char형 배열을 저장하고 있는 것이다.<br>
+	 * 'String s = "";'과 같은 표현이 가능하다고 해서 'char c = ";'와 같은 표현도 가능한 것은 아니다. char형 변수에는 반드시 하나의 문자를 지정해야한다.<br>
+	 * <pre><code>
+	 *     String s = null;
+	 *     char c = '\u0000';
+	 *     ↓
+	 *     String s = ""; // 빈 문자열로 초기화
+	 *     char c = ' '; // 공백으로 초기화
+	 * </code></pre>
+	 * <br>
+	 * 일반적으로 변수를 선언할 때, 각 타입의 기본값으로 초기화 하지만 String은 참조형 타입의 기본값인 null 보다는 빈 문자열로, char형은 기본값인 '\u0000' 대신 공백으로 초기화하는 것이 보통이다.<br>
+	 * <small>※'\u0000'은 유니코드의 첫 번째 문자로써 아무런 문자도 지정되지 않은 빈 문자이다.</small>
+	 */
+	class Memo14 {
+
+	}
+
+	/**
+	 * <h5>유니코드의 보충문자</h5><br>
+	 * 유니코드는 원래 2 byte, 즉 16비트 문자체계인데, 이걸로도 모자라서 20비트로 확장하게 되었다.<br>
+	 * 그래서 하나의 문자를 char타입으로 다루지 못하고, int타입으로 다룰 수 밖에 없다.<br>
+	 * 확장에 의해 새로 추가된 문자들을 '보충 문자(supplementary character)'라고 하는데, String클래스의 메서드 중에서는 보충 문자를 지원하는 것이 있고 지원하지 않는 것도 있다.<br>
+	 * 이들을 구별하는 방법은 쉽다. 매개변수가 'int ch'인 것들은 보충문자를 지원하는 것이고, 'char ch'인 것들은 지원하지 않는 것들이다.
+	 */
+	class Memo15 {
+
+	}
+
+	/**
+	 * <h5>문자 인코딩 변환</h5><br>
+	 * getBytes(String charsetName)를 사용하면, 문자열의 문자 인코딩을 다른 인코딩으로 변경할 수 있다.<br>
+	 * 자바가 UTF-16을 사용하지만, 문자 리터럴에 포함되는 문자들은 OS의 인코딩을 사용한다.<br>
+	 * 한글 윈도우즈의 경우 문자 인코딩으로 CP949를 사용하며, UTF-8로 변경하려면, 아래와 같이 한다.<br>
+	 * <pre><code>
+	 *     byte[] utf8_str = "가".getBytes("UTF-8"); // 문자열을 UTF-8로 변환
+	 *     String str = new String(utf8_str, "UTF-8"); // byte배열을 문자열로 변환
+	 * </code></pre>
+	 * <br>
+	 * 서로 다른 문자 인코딩을 사용하는 컴퓨터 간에 데이터를 주고받을 때는 적절한 문자 인코딩이 필요하다.<br>
+	 * 그렇지 않으면 알아볼 수 없는 내용의 문서를 보게 될 것이다.<br>
+	 * UTF-8은 한글 한 글자를 3 byte로 표현하고, CP949는 2 byte로 표현한다. 그래서 문자'가'는 UTF-8로 '0xEAB080'이고, CP949로 '0xB0A1'이다.<br>
+	 * <small>※문자 인코딩은 CP949는 MS949라고도 한다.</small>
+	 */
+	class Memo16 {
+
+	}
+
+	/**
+	 * <h5>String.format()</h5><br>
+	 * format()은 형식화된 문자열을 만들어내는 간단한 방법이다. printf()하고 사용법이 완전히 똑같으므로 사용하는데 별 어려움은 없을 것이다.
+	 */
+	class Memo17 {
+
+	}
+
+	/**
+	 * <h5>기본형 값을 String으로 변환</h5><br>
+	 * 숫자에 빈 문자열을""을 더해주기만 하면 된다. 이 외에도 valueOf()를 사용하는 방법도 있다. 성능은 valueOf()가 더 좋지만, 빈 문자열을 더하는 방법이 간단하고 편하기 때문에 성능향상이 필요한 경우에만 valueOf()를 쓰자.<br>
+	 * <small>※참조변수에 String을 더하면, 참조변수가 가리키는 인스턴스의 toString()을 호출하여 String을 얻은 다음 결합한다.</small>
+	 */
+	class Memo18 {
+
+	}
+
+	/**
+	 * <h5>String을 기본형 값으로 변환</h5><br>
+	 * String을 기본형으로 변환하는 방법도 간단하다. valueOf()를 쓰거나 앞서 배운 parseInt()를 사용하면 된다.<br>
+	 * valueOf(String s)는 메서드 내부에서 그저 parseInt(String s)를 호출할 뿐이므로, 두 메서드는 반환 타입만 다르지 같은 메서드다.<br>
+	 * <small>※parseInt(s, 10)은 parseInt(s)와 같다.</small><br>
+	 * <small>※문자열"A"를 문자'A'로 변환하려면 char ch = "A".charAt(0)과 같이 하면 된다.</small><br>
+	 * parseInt()나 parseFloat()같은 메서드는 문자열에 공백 또는 문자가 포함되어 있는 경우 변환 시 예외(NumberFormatException)가 발생할 수 있으므로 주의해야 한다.<br>
+	 * 그래서 문자열 양끝의 공백을 제거해주는 trim()을 습관적으로 같이 사용하기도 한다.<br>
+	 * 부호를 의미하는 '+'나 소수점을 의미하는 ','와 float형 값을 뜻하는 f와 같은 자료형 접미사는 허용된다.<br>
+	 * 단, 자료형에 알맞은 변환을 하는 경우에만 허용된다.<br>
+	 * <small>※'+'가 포함된 문자열이 parseInt()로 변환가능하게 된 것은 JDK1.7부터이다.</small><br>
+	 * substring(int start, int end)를 사용할 떄 주의해야할 점은 매개변수로 사용되는 문자열에서 각 문자의 위치를 뜻하는 index가 0부터 시작한다는 것과 start부터 end의 범위중 end위치에 있는 문자는 결과에 포함되지 않는다는 것이다.<br>
+	 * <small>※end에서 start값을 빼면 substring에 의해 추출될 글자의 수가 된다.</small>
+	 */
+	class Memo19 {
 
 	}
 
@@ -246,7 +345,7 @@ public class Chapter09 {
 	 * StringBuffer클래스는 String클래스와 같이 문자열을 저장하기 위한 char형 배열의 참조변수를 인스턴스변수로 선언해 놓고 있다.<br>
 	 * StringBuffer인스턴스가 생성될 때, char형 배열이 생성되며 이 때 생성된 char형 배열을 인스턴스변수 value가 참조하게 된다.
 	 */
-	class tempMemo1 {
+	class Memo20 {
 
 	}
 
@@ -268,7 +367,7 @@ public class Chapter09 {
 	 * </code><br>
 	 * 이렇게 함으로써 StringBuffer클래스의 인스턴스 변수 value는 길이가 증가된 새로운 배열을 참조하게 된다.
 	 */
-	class tempMemo2 {
+	class Memo21 {
 
 	}
 
@@ -299,7 +398,7 @@ public class Chapter09 {
 	 *     sb.append("123").append("ZZ");
 	 * </code>
 	 */
-	class tempMemo3 {
+	class Memo22 {
 
 	}
 
@@ -316,7 +415,7 @@ public class Chapter09 {
 	 * 반면에 toString()은 오버라이딩되어 있어서 StringBuffer인스턴스에 toString()을 호출하면, 담고있는 문자열을 String으로 반환한다.<br>
 	 * StringBuffer인스턴스에 담긴 문자열을 비교하기 위해서는 StringBuffer인스턴스 toString()을 호출해서 String인스턴스를 얻은 다음, 여기에 equals메서드를 사용해서 비교해야한다.
 	 */
-	class tempMemo4 {
+	class Memo23 {
 	}
 
 	static class StringBufferEx1 {
@@ -345,7 +444,7 @@ public class Chapter09 {
 	 * StringBuilder는 StringBuffer와 완전히 똑같은 기능으로 작성되어 있어서, 소스코드에서 StringBuffer대신 StringBuilder를 사용하도록 바꾸기만 하면 된다.<br>
 	 * StringBuffer도 충분히 성능이 좋기 때문에 성능향상이 반드시 필요한 경우를 제외하고는 기존에 작성한 코드에서 StringBuffer를 StringBuilder로 굳이 바꿀 필요는 없다.
 	 */
-	class tempMemo5 {
+	class Memo24 {
 	}
 
 	/**
@@ -354,14 +453,14 @@ public class Chapter09 {
 	 * Math클래스의 생성자는 접근 제어자가 private이기 때문에 다른 클래스에서 Math인스턴스를 생성할 수 없도록 되어있다.<br>
 	 * 그 이유는 클래스 내에 인스턴스변수가 하나도 없어서 인스턴스를 생성할 필요가 없기 때문이다.<br>
 	 */
-	class tempMemo06 {
+	class Memo25 {
 
 	}
 
 	/**
 	 * <h5>올림, 버림, 반올림</h5><br>
 	 */
-	class tempMemo07 {
+	class Memo26 {
 	}
 
 }
