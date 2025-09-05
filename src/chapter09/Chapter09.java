@@ -520,6 +520,7 @@ public class Chapter09 {
 	 * char형과 int형을 제외한 나머지는 자료형 이름의 첫 글자를 대문자로 한 것이 각 래퍼 클래스의 이름이다.<br>
 	 * 래퍼 클래스의 생성자는 매개변수로 문자열이나 각 자료형의 값들을 인자로 받는다. 이 때 주의해야할 것은 생성자의 매개변수로 문자열을 재공할 때, 각 자료형에 알맞은 문자열을 사용해야한다는 것이다.<br>
 	 * 래퍼 클래스들은 객체생성 시에 생성자의 인자로 주어진 각 자료형에 알맞은 값을 내부적으로 저장하고 있다.<br>
+	 * 래퍼클래스의 생성자<br>
 	 * <table>
 	 *     <thead>
 	 *         <th>기본형</th>
@@ -529,57 +530,132 @@ public class Chapter09 {
 	 *     </thead>
 	 *     <tbody>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>boolean</td>
+	 *             <td>Boolean</td>
+	 *             <td>Boolean(boolean value), Boolean(String s)</td>
+	 *             <td>Boolean b = new Boolean(true);, Boolean b2 = new Boolean("true");</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>char</td>
+	 *             <td>Character</td>
+	 *             <td>Character(char value)</td>
+	 *             <td>Character c = new Character('a');</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>byte</td>
+	 *             <td>Byte</td>
+	 *             <td>Byte(byte value), Byte(String s)</td>
+	 *             <td>Byte b = new Byte(10);, Byte b2 = new Byte("10");</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>short</td>
+	 *             <td>Short</td>
+	 *             <td>Short(short value), Short(String s)</td>
+	 *             <td>Short s = new Short(10);, Short s2 = new Short("10");</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>int</td>
+	 *             <td>Integer</td>
+	 *             <td>Integer(int value), Integer(String s)</td>
+	 *             <td>Integer i = new Integer(100);, Integer i2 = new Integer("10");</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>long</td>
+	 *             <td>Long</td>
+	 *             <td>Long(long value), Long(String s)</td>
+	 *             <td>Long l = new Long(100);, Long l2 = new Long("100");</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>float</td>
+	 *             <td>Float</td>
+	 *             <td>Float(double value), Float(float value), Float(String s)</td>
+	 *             <td>Float f = new Float(1.0);, Float f2 = new Float(1.0f);, Float f3 = new Float("1.0f");</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
-	 *             <td></td>
+	 *             <td>double</td>
+	 *             <td>Double</td>
+	 *             <td>Double(double value), Double(String s)</td>
+	 *             <td>Double d = new Double(1.0);, Double d2 = new Double("1.0");</td>
 	 *         </tr>
 	 *     </tbody>
 	 * </table>
+	 * <br>
+	 * 래퍼 클래스들은 모두 equals()가 오버라이딩되어 있어서 주소값이 아닌 객체가 가지고 있는 값을 비교한다. 오토박싱이 된다고 해도 Integer객체에 비교연산자를 사용할 수 없다.<br>
+	 * 대신 compareTo()를 제공한다.<br>
+	 * toString()도 오버라이딩되어 있어서 객체가 가지고 있는 값을 문자열로 변환하여 반환한다. 래퍼 클래스들은 MAX_VALUE, MIN_VALUE, SIZE, BYTES, TYPE 등의 static 상수를 공통적으로 가지고 있다.<br>
 	 */
 	class Memo29 {
+
+	}
+
+	/**
+	 * <h5>Number클래스</h5><br>
+	 * 이 클래스는 추상클래스로 내부적으로 숫자를 멤버변수로 갖는 래퍼 클래스들의 조상이다. 기본형 중에서 숫자와 관련된 래퍼 클래스들은 모두 Number클래스의 자손이라는 것을 알 수 있다.<br>
+	 * Number클래스 자손으로 BigInteger와 BigDecimal 등이 있는데, BigInteger는 long으로도 다룰 수 없는 큰 범위의 정수를, BigDecimal은 double로도 다룰 수 없는 큰 범위의 부동 소수점수를 처리하기 위한 것으로 연산자의 역할을 대신하는 다양한 메서드를 제공한다.<br>
+	 * Number클래스의 실제 소스는 아래와 같다. 객체가 가지고 있는 값을 숫자와 관련된 기본형으로 변환하여 반환하는 메서드들을 정의하고 있다.<br>
+	 * <pre><code>
+	 *     public abstract class Number implements java.io.Serializable {
+	 *         public abstract int intValue();
+	 *         public abstract long longValue();
+	 *         public abstract float floatValue();
+	 *         public abstract double doubleValue();
+	 *
+	 *         public byte byteValue() {
+	 *             return (byte)intValue();
+	 *         }
+	 *
+	 *         public short shortValue() {
+	 *             return (short)intValue();
+	 *         }
+	 *     }
+	 * </code></pre>
+	 */
+	class Memo30 {
+
+	}
+
+	/**
+	 * <h5>문자열을 숫자로 변환하기</h5><br>
+	 * <pre><code>
+	 *     int i2 = Integer.parseInt("100"); // 주로 이 방법을 많이 사용.
+	 * </code></pre>
+	 * <br>
+	 * 문자열을 기본형 또는 래퍼클래스로 변환하는 방법<br>
+	 * <pre><code>
+	 *     byte b = Byte.parseByte("100");
+	 *     short s = Short.parseShort("100");
+	 *     int i = Integer.parseInt("100");
+	 *     long l = Long.parseLong("100");
+	 *     float f = Float.parseFloat("3.14");
+	 *     double d = Double.parseDouble("3.14");
+	 *     Byte b = Byte.valueOf("100");
+	 *     Short s = Short.valueOf("100");
+	 *     Integer i = Integer.valueOf("100");
+	 *     Long l = Long.valueOf("100");
+	 *     Float f = Float.valueOf("3.14");
+	 *     Double d = double.valueOf("3.14");
+	 * </code></pre>
+	 * <br>
+	 * JDK1.5부터 도입된 '오토박싱(autoboxing)' 기능 때문에 반환값이 기본형일 때와 래퍼클래스일 때의 차이가 없어졌다. 그래서 그냥 구별없이 valueOf()를 쓰는 것도 괜찮은 방법이다. 단, 성능은 valueOf()가 조금 더 느리다.<br>
+	 * 문자열이 10진수가 아닌 다른 진법(radix)의 숫자일 때도 변환이 가능하도록 다음과 같은 메서드가 제공된다.<br>
+	 * <pre><code>
+	 *     static int parseInt(String s, int radix) // 문자열 s를 radix진법으로 인식
+	 *     static Integer valueOf(String s, int radix)
+	 * </code></pre>
+	 */
+	class Memo31 {
+
+	}
+
+	/**
+	 * <h5>오토박싱 & 언박싱(autoboxing & unboxing)</h5><br>
+	 * JDK1.5이전에는 기본형과 참조형 간의 연산이 불가능했기 때문에, 래퍼 클래스로 기본형을 객체로 만들어서 연산해야 했다.<br>
+	 * 이제는 기본형과 참조형 간의 덧셈이 가능하다. 자바 언어의 규칙이 바뀐 것은 아니고, 컴파일러가 자동으로 변환하는 코드를 넣어주기 때문이다.<br>
+	 * 내부적으로 객체 배열을 가지고 있는 Vector클래스나 ArrayList클래스에 기본형 값을 저장해야할 때나 형변환이 필요할 때도 컴파일러가 자동적으로 코드를 추가해 준다.<br>
+	 * 기본형 값을 래퍼 클래스의 객체로 자동 변환해주는 것을 '오토박싱(autoboxing)'이라고 하고, 반대로 변환하는 것을 '언박싱(unboxing)'이라고 한다.<br>
+	 * 사실 이 기능은 컴파일러가 제공하는 편리한 기능일 뿐 자바의 원칙이 바뀐 것은 아니다. 생성자가 없는 클래스에 컴파일러가 기본 생성자를 자동적으로 추가해 주듯이 개발자가 간략하게 쓴 구문을 컴파일러가 원래의 구문으로 변경해 주는 것뿐이다.
+	 */
+	class Memo32 {
 
 	}
 
