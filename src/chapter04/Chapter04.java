@@ -126,9 +126,46 @@ public class Chapter04 {
 	 * 2. 조건식의 결과와 일치하는 case문으로 이동한다.<br>
 	 * 3. 이후의 문장들을 수행한다.<br>
 	 * 4. break문이나 switch문의 끝을 만나면 switch문 전체를 빠져나간다.<br>
-	 * 만일 조건식의 결과와 일치하는 case문이 하나도 없는 경우에는 default문으로 이동한다.
+	 * 만일 조건식의 결과와 일치하는 case문이 하나도 없는 경우에는 default문으로 이동한다.<br>
+	 * switch문에서 break문은 각 case문의 영역을 구분하는 역할을 하는데, 만일 break문을 생략하면 case문 사이의 구분이 없어지므로 다른 break문을 만나거나 switch문 블럭{}의 끝을 만날 때까지 나오는 모든 문장들을 수행한다.<br>
+	 * <pre><code>
+	 *     switch (level) {
+	 *         case 3 :
+	 *         		grantDelete(); // 삭제권한을 준다.
+	 *         case 2 :
+	 *         		grantWrite(); // 쓰기권한을 준다.
+	 *         case 1 :
+	 *         		grantRead(); // 읽기권한을 준다.
+	 *     }
+	 * </code></pre>
+	 * <br>
+	 * 회원제로 운영되는 웹사이트에서 많이 사용될 만한 코드이다.<br>
+	 * 로그인한 사용자의 등급(level)을 체크하여, 등급에 맞는 권한을 부여하는 방식으로 되어 있다.<br>
+	 * 제일 높은 등급인 3을 가진 사용자는 grantDelete(), grantWrite(), grantRead()가 모두 수행되어 읽기, 쓰기, 삭제 권한까지 모두 갖게 되고, 제일 낮은 등급인 1을 가진 사용자는 읽기 권한만을 갖게 된다.
 	 */
 	class Memo7 {
+
+	}
+
+	/**
+	 * <h5>switch문의 제약조건</h5><br>
+	 * switch문의 조건식은 결과값이 반드시 정수이어야 하며, 이 값과 일치하는 case문으로 이동하기 때문에 case문의 값 역시 정수이어야 한다. 그리고 중복되지 않아야 한다.<br>
+	 * 게다가 case문의 값은 반드시 상수이어야 한다.<br>
+	 * <pre><code>
+	 *     switch문의 제약조건
+	 *     1. switch문의 조건식 결과는 정수 또는 문자열이어야 한다.
+	 *     2. case문의 값은 정수 상수만 가능하며, 중복되지 않아야 한다.
+	 * </code></pre>
+	 */
+	class Memo8 {
+
+	}
+
+	/**
+	 * <h5>switch문의 중첩</h5><br>
+	 * switch문도 중첩이 가능하다. 주의할 점은 중첩 switch문에서 break문을 빼먹기 쉽다는 것이다.
+	 */
+	class Memo9 {
 
 	}
 
