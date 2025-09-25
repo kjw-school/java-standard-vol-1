@@ -63,9 +63,58 @@ public class Chapter05_2 {
 
 	/**
 	 * <h5>2.3 char배열과 String클래스</h5><br>
-	 *
+	 * 지금까지 여러 문자, 즉 문자열을 저장할 때 String타입의 변수를 사용했다.<br>
+	 * 사실 문자열이라는 용어는 '문자를 연이어 늘어놓은 것'을 의미하므로 문자배열인 char배열과 같은 뜻이다.<br>
+	 * 자바에서는 char배열이 아닌 String클래스를 이용해서 문자열을 처리하는 이유는 String클래스가 char배열에 여러 가지 기능을 추가하여 확장한 것이기 때문이다.<br>
+	 * <pre><code>
+	 *     String클래스는 char배열에 기능(메서드)을 추가한 것이다.
+	 * </code></pre>
+	 * <br>
+	 * 객체지향언어에서는 데이터와 그에 관련된 기능을 하나의 클래스에 묶어서 다룰 수 있게 한다.<br>
+	 * 서로 관련된 것들끼리 데이터와 기능을 구분하지 않고 함께 묶는 것이다.<br>
+	 * '기능'은 함수를 의미하며, 메서드는 객체지향 언어에서 '함수'대신 사용하는 용어일 뿐 함수와 같은 뜻이다.<br>
+	 * char배열과 String클래스의 한 가지 중요한 차이가 있는데, String객체(문자열)는 읽을 수 만 있을 뿐 내용을 변경할 수 없다는 것이다.
 	 */
 	class Memo3 {
+
+	}
+
+	/**
+	 * <h5>String클래스의 주요 메서드</h5><br>
+	 * String클래스의 주요 메서드<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>char charAt(int index)</td>
+	 *             <td>문자열에서 해당 휘치(index)에 있는 문자를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int length()</td>
+	 *             <td>문자열의 길이를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String substring(int from, int to)</td>
+	 *             <td>문자열에서 해당 범위(from~to)에 있는 문자열을 반환한다.(to는 범위에 포함되지 않음)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>boolean equals(Object obj)</td>
+	 *             <td>문자열의 내용이 obj와 같은지 확인한다. 같으면 결과는 true, 다르면 false가 된다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>char[] toCharArray()</td>
+	 *             <td>문자열을 문자배열(char[])로 변환해서 반환한다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * charAt메서드는 문자열에서 지정된 index에 있는 한 문자를 가져온다. 배열과 마찬가지로 charAt메서드의 index값은 0부터 시작한다.<br>
+	 * substring()은 문자열의 일부를 뽑아낼 수 있다. 주의할 것은 범위의 끝은 포함되지 않는다는 것이다. 예를 들어, index의 범위가 1~4라면 4는 범위에 포함되지 않는다.
+	 */
+	class Memo4 {
 
 	}
 }
