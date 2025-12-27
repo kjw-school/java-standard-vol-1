@@ -34,7 +34,7 @@ public class Chapter03_5 {
 	 * 이 연산자는 피연산자가 true이면, false를, false면 true를 결과로 반환한다. 간단히 말해서, true와 false를 반대로 바꾸는 것이다.<br>
 	 * <table>
 	 *     <thead>
-	 *         <th>x/th>
+	 *         <th>x</th>
 	 *         <th>!x</th>
 	 *     </thead>
 	 *     <tbody>

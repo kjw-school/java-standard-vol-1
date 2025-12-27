@@ -93,7 +93,7 @@ public class Chapter03_6 {
 	 *             <td>i = i | 3;</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td>i *= 10 + j;/td>
+	 *             <td>i *= 10 + j;</td>
 	 *             <td>i = i * (10 + j);</td>
 	 *         </tr>
 	 *     </tbody>
