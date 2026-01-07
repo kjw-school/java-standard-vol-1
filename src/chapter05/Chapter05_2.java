@@ -90,7 +90,7 @@ public class Chapter05_2 {
 	 *     <tbody>
 	 *         <tr>
 	 *             <td>char charAt(int index)</td>
-	 *             <td>문자열에서 해당 휘치(index)에 있는 문자를 반환한다.</td>
+	 *             <td>문자열에서 해당 위치(index)에 있는 문자를 반환한다.</td>
 	 *         </tr>
 	 *         <tr>
 	 *             <td>int length()</td>
