@@ -187,7 +187,9 @@ public class Chapter06_3 {
 	 * <h5>3.5 메서드의 호출</h5><br>
 	 * 메서드를 정의했어도 호출되지 않으면 아무 일도 일어나지 않는다. 메서드를 호출해야만 구현부{}의 문장들의 수행된다.<br>
 	 * <small>※main메서드는 프로그램 실행 시 OS에 의해 자동적으로 호출된다.</small><br>
-	 * <code>메서드이름(값1, 값2, ...) // 메서드를 호출하는 방법</code>
+	 * <pre><code>
+	 *     메서드이름(값1, 값2, ...) // 메서드를 호출하는 방법
+	 * </code></pre>
 	 */
 	class Memo10 {
 	}
@@ -196,15 +198,15 @@ public class Chapter06_3 {
 	 * <h5>인자(argument)와 매개변수(parameter)</h5><br>
 	 * 메서드를 호출할 때 괄호{}안에 저장해준 값들을 '인자(argument)' 또는 '인수'라고 하는데, 인자의 개수와 순서는 호출된 메서드에 선언된 매개변수와 일치해야 한다.<br>
 	 * 그리고 인자는 메서드가 호출되면서 매개변수에 대입되므로, 인자의 타입은 매개변수의 타입과 일치하거나 자동 형변환이 가능한 것이어야 한다.<br>
-	 * <code>
-	 *     public static void main(String args[]) {<br>
-	 *         int result = add(3, 5) // 메서드를 호출, (3,5) = 인자(argument, 원본)<br>
-	 *     }<br>
-	 *
-	 *     int add(int x, int y) {<br>
-	 *         ... // (x, y) = 매개변수(parameter, 복사본)<br>
+	 * <pre><code>
+	 *     public static void main(String args[]) {
+	 *         int result = add(3, 5) // 메서드를 호출, (3,5) = 인자(argument, 원본)
 	 *     }
-	 * </code>
+	 *
+	 *     int add(int x, int y) {
+	 *         ... // (x, y) = 매개변수(parameter, 복사본)
+	 *     }
+	 * </code></pre>
 	 */
 	class Memo11 {
 	}
@@ -218,14 +220,14 @@ public class Chapter06_3 {
 
 	/**
 	 * MyMath클래스의 'add(long a, long b)'를 호출하기 위해서는 먼저 'MyMath mm = new MyMath();'와 같이 해서, MyMath클래스의 인스턴스를 생성한 다음 참조변수 mm을 통해야한다.<br>
-	 * <code>
-	 *     MyMath mm = new MyMath(); // 먼저 인스턴스를 생성한다.<br>
-	 *     long value = mm.add(1L, 2L); // 메서드를 호출한다.<br>
-	 *     long add(long a, long b) {<br>
-	 *         long result = a + b;<br>
-	 *         return result;<br>
-	 *     }<br>
-	 * </code>
+	 * <pre><code>
+	 *     MyMath mm = new MyMath(); // 먼저 인스턴스를 생성한다.
+	 *     long value = mm.add(1L, 2L); // 메서드를 호출한다.
+	 *     long add(long a, long b) {
+	 *         long result = a + b;
+	 *         return result;
+	 *     }
+	 * </code></pre>
 	 * 1. main메서드에서 메서드 add를 호출한다. 호출시 지정한 1L과 2L이 메서드 add의 매개변수 a,b에 각각 복사(대입)된다.<br>
 	 * 2. 메서드 add의 괄호{}안에 있는 문장들이 순서대로 수행된다.<br>
 	 * 3. 메서드 add의 모든 문장이 실행되거나 return문을 만나면, 호출한 메서드(main메서드)로 되돌아와서 이후의 문장들을 실행한다.<br>
@@ -275,7 +277,7 @@ public class Chapter06_3 {
 	/**
 	 * <h5>3.6 return문</h5>
 	 * <br>
-	 * return문은 현재 실행준인 메서드를 종료하고 호출한 메서드로 되돌아간다. 지금까지 반환값이 있을 때만 return문을 썼지만, 원래는 반환값의<br>
+	 * return문은 현재 실행중인 메서드를 종료하고 호출한 메서드로 되돌아간다. 지금까지 반환값이 있을 때만 return문을 썼지만, 원래는 반환값의<br>
 	 * 유무에 관계없이 모든 메서드에는 적어도 하나의 return문이 있어야 한다. 그런데도 반환타입이 void인 경우, return문 없이도 아무런 문제가 없었던 이유는<br>
 	 * 컴파일러가 메서드의 마지막에 'return;'을 자동적으로 추가해주었기 때문이다.
 	 */
