@@ -18,7 +18,7 @@ public class Chapter09 {
 	 * StringBuffer클래스는 String클래스와 같이 문자열을 저장하기 위한 char형 배열의 참조변수를 인스턴스변수로 선언해 놓고 있다.<br>
 	 * StringBuffer인스턴스가 생성될 때, char형 배열이 생성되며 이 때 생성된 char형 배열을 인스턴스변수 value가 참조하게 된다.
 	 */
-	class tempMemo1 {
+	class Memo01 {
 
 	}
 
@@ -40,7 +40,7 @@ public class Chapter09 {
 	 * </code><br>
 	 * 이렇게 함으로써 StringBuffer클래스의 인스턴스 변수 value는 길이가 증가된 새로운 배열을 참조하게 된다.
 	 */
-	class tempMemo2 {
+	class Memo02 {
 
 	}
 
@@ -71,7 +71,7 @@ public class Chapter09 {
 	 *     sb.append("123").append("ZZ");
 	 * </code>
 	 */
-	class tempMemo3 {
+	class Memo3 {
 
 	}
 
@@ -88,7 +88,7 @@ public class Chapter09 {
 	 * 반면에 toString()은 오버라이딩되어 있어서 StringBuffer인스턴스에 toString()을 호출하면, 담고있는 문자열을 String으로 반환한다.<br>
 	 * StringBuffer인스턴스에 담긴 문자열을 비교하기 위해서는 StringBuffer인스턴스 toString()을 호출해서 String인스턴스를 얻은 다음, 여기에 equals메서드를 사용해서 비교해야한다.
 	 */
-	class tempMemo4 {
+	class Memo4 {
 	}
 
 	static class StringBufferEx1 {
@@ -117,7 +117,7 @@ public class Chapter09 {
 	 * StringBuilder는 StringBuffer와 완전히 똑같은 기능으로 작성되어 있어서, 소스코드에서 StringBuffer대신 StringBuilder를 사용하도록 바꾸기만 하면 된다.<br>
 	 * StringBuffer도 충분히 성능이 좋기 때문에 성능향상이 반드시 필요한 경우를 제외하고는 기존에 작성한 코드에서 StringBuffer를 StringBuilder로 굳이 바꿀 필요는 없다.
 	 */
-	class tempMemo5 {
+	class Memo5 {
 	}
 
 	/**
@@ -126,14 +126,58 @@ public class Chapter09 {
 	 * Math클래스의 생성자는 접근 제어자가 private이기 때문에 다른 클래스에서 Math인스턴스를 생성할 수 없도록 되어있다.<br>
 	 * 그 이유는 클래스 내에 인스턴스변수가 하나도 없어서 인스턴스를 생성할 필요가 없기 때문이다.<br>
 	 */
-	class tempMemo06 {
+	class Memo06 {
 
 	}
 
 	/**
 	 * <h5>올림, 버림, 반올림</h5><br>
+	 * 소수점 n번째 자리에서 반올림한 값을 얻기 위해서는 round()를 사용해야 하는데, 이 메서드는 항상<br>
+	 * 소수점 첫째자리에서 반올림을 해서 정수값(long)을 결과로 돌려준다.<br>
+	 * <pre><code>
+	 *     1. 원래 값에 100을 곱한다.
+	 *     		90.7552 * 100 -> 9075.52
+	 *     2. 위의 결과에 Math.round()를 사용한다.
+	 *     		Math.round(9075.52) -> 9076
+	 *     3. 위의 결과를 다시 100.0으로 나눈다.
+	 *     		9076 / 100.0 -> 90.76
+	 *     		9076 / 100 -> 90
+	 * </code></pre><br>
+	 * 만일 정수형 값인 100 또는 100L로 나눈다면, 결과는 정수형 값을 얻게 될 것이다.<br>
+	 * 정수형 간의 연산에서는 반올림이 이루어지지 않는다는 것을 반드시 기억하자.<br>
+	 * 반올림이 필요하지 않다면 round()를 사용하지 않고 단순히 1000으로 곱하고 1000.0으로 나누기만 하면 된다.<br>
+	 * rint()도 round()처럼 소수점 첫 째자리에서 반올림하지만, 반환값이 double이다.<br>
+	 * 그리고 rint()는 두 정수의 정 가운데 있는 값은 가장 가까운 짝수 정수를 반환한다.<br>
+	 * round()는 소수점 첫째자리가 5일 때, 더 큰 값으로 반올림하니까 01이 되지만, rint()는 -1.5와 같이 홀수(-1.0)와 짝수(-2.0)의 딱 중간에 있는 경우 짝수(-2.0)를 결과로 반환한다.<br>
+	 * 그리고 음수에서는 양수와 달리 -1.5를 버림(floor)하면 -2.0이 된다.
 	 */
-	class tempMemo07 {
+	class Memo07 {
+	}
+
+	/**
+	 * <h5>예외를 발생시키는 메서드</h5><br>
+	 * 메서드 이름에 'Exact'가 포함된 메서드들이 JDK1.8부터 새로 추가되었다. 이들은 정수형간의 연산에서 발생할 수 있는 오버플로우(overflow)를 감지하기 위한 것이다.<br>
+	 * 연산자는 단지 결과를 반환할 뿐, 오버플로우의 발생여부에 대해 알려주지 않는다. 그러나 위의 메서드들은 오버플로우가 발생하면, 예외(ArithmeticException)를 발생시킨다.<br>
+	 * negateExact(int a)는 매개변수의 부호를 반대로 바꿔주는데 무슨 예외가 발생할까?라고 생각할지도 모르겠다. 부호를 반대로 바꾸는 식은 '~a+1'이다. '~a'의 결과가 int의 최대값이면, 여기에 1을 더하니까 오버플로우가 발생할 수 있는 것이다.
+	 */
+	class Memo08 {
+
+	}
+
+	/**
+	 * <h5>StrictMath클래스</h5><br>
+	 * Math클래스는 최대한의 성능을 얻기 위해 JVM이 설치된 OS의 메서드를 호출해서 사용한다. 즉, OS에 의존적인 계산을 하고 있는 것이다.<br>
+	 * 이러한 차이를 없애기 위해 성능은 다소 포기하는 대신, 어떤 OS에서 실행되어도 항상 같은 결과를 얻도록 Math클래스를 새로 작성한 것이 StrictMath클래스이다.
+	 */
+	class Memo09 {
+
+	}
+
+	/**
+	 * <h5>1.5 래퍼(wrapper) 클래스</h5>
+	 */
+	class Memo10 {
+
 	}
 
 }
