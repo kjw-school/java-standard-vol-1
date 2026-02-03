@@ -174,9 +174,157 @@ public class Chapter09 {
 	}
 
 	/**
-	 * <h5>1.5 래퍼(wrapper) 클래스</h5>
+	 * <h5>1.5 래퍼(wrapper) 클래스</h5><br>
+	 * 객체지향 개념에서 모든 것은 객체로 다루어져야 한다. 그러나 자바에서는 8개의 기본형을 객체로 다루지 않는데 이것이 바로 자바가 완전한 객체지향 언어가 아니라는 얘기를 듣는 이유이다.<br>
+	 * 그 대신 보다 높은 성능을 얻을 수 있었다. 기본형(primitive type)변수도 어쩔 수 없이 객체로 다뤄야 하는 경우가 있다.<br>
+	 * 매개변수로 객체를 요구할 때, 기본형 값이 아닌 객체로 저장해야할 때, 객체간의 비교가 필요할 때 등등의 경우에는 기본형 값들을 변환하여 작업을 수행해야 한다.<br>
+	 * 이 때 사용되는 것이 래퍼(wrapper)클래스이다. 8개의 기본형을 대표하는 8개의 래퍼클래스가 있는데, 이 클래스들을 이용하면 기본형 값을 객체로 다룰 수 있다.<br>
+	 * char형과 int형을 제외한 나머지는 자료형 이름의 첫 글자를 대문자로 한 것이 각 래퍼 클래스의 이름이다.<br>
+	 * 래퍼 클래스의 생성자는 매개변수로 문자열이나 각 자료형의 값들을 인자로 받는다. 이 때 주의해야할 것은 생성자의 매개변수로 문자열을 제공할 때, 각 자료형에 알맞은 문자열을 사용해야한다는 것이다.<br>
+	 * 래퍼 클래스들은 객체생성 시에 생성자의 인자로 주어진 각 자료형에 알맞은 값을 내부적으로 저장하고 있다.<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>기본형</th>
+	 *         <th>래퍼클래스</th>
+	 *         <th>생성자</th>
+	 *         <th>활용예</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>boolean</td>
+	 *             <td>Boolean</td>
+	 *             <td>
+	 *                 Boolean(boolean value)<br>
+	 *                 Boolean(String s)
+	 *             </td>
+	 *             <td>
+	 *                 Boolean b = new Boolean(true);<br>
+	 *                 Boolean b2 = new Boolean("true");
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>char</td>
+	 *             <td>Character</td>
+	 *             <td>Character(char value)</td>
+	 *             <td>Character c = new Character('a');</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>byte</td>
+	 *             <td>Byte</td>
+	 *             <td>
+	 *                 Byte(byte value)<br>
+	 *                 Byte(String s)
+	 *             </td>
+	 *             <td>
+	 *                 Byte b = new Byte(10);<br>
+	 *                 Byte b2 = new Byte("10");
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>short</td>
+	 *             <td>Short</td>
+	 *             <td>
+	 *                 Short(short value)<br>
+	 *                 Short(String s)
+	 *             </td>
+	 *             <td>
+	 *                 Short s = new Short(10);<br>
+	 *                 Short s2 = new Short("10")
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int</td>
+	 *             <td>Integer</td>
+	 *             <td>
+	 *                 Integer(int value)<br>
+	 *                 Integer(String s)
+	 *             </td>
+	 *             <td>
+	 *                 Integer i = new Integer(100);<br>
+	 *                 Integer i2 = new Integer("100");
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>long</td>
+	 *             <td>Long</td>
+	 *             <td>
+	 *                 Long(long value)<br>
+	 *                 Long(String s)
+	 *             </td>
+	 *             <td>
+	 *                 Long l = new Long(100);<br>
+	 *                 Long l2 = new Long("100");
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>float</td>
+	 *             <td>Float</td>
+	 *             <td>
+	 *                 Float(double value)<br>
+	 *                 Float(float value)<br>
+	 *                 Float(String s)
+	 *             </td>
+	 *             <td>
+	 *                 Float f = new Float(1.0);<br>
+	 *                 Float f2 = new Float(1.0f);<br>
+	 *                 Float f3 = new Float("1.0f");
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>double</td>
+	 *             <td>Double</td>
+	 *             <td>
+	 *                 Double(double value)<br>
+	 *                 Double(String s)
+	 *             </td>
+	 *             <td>
+	 *                 Double d = new Double(1.0);<br>
+	 *                 Double d2 = new Double("1.0");
+	 *             </td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 래퍼 클래스들은 모두 equals()가 오버라이딩되어 있어서 주소값이 아닌 객체가 가지고 있는 값을 비교한다.<br>
+	 * 오토박싱이 된다고 해도 Integer객체에 비교연산자를 사용할 수 없다. 대신 compareTo()를 제공한다.<br>
+	 * toString()도 오버라이딩되어 있어서 객체가 가지고 있는 값을 문자열로 변환하여 반환한다. 래퍼 클래들은 MAX_VALUE, MIN_VALUE, SIZE, BYTES, TYPE 등의 static상수를 공통적으로 가지고 있다.
 	 */
 	class Memo10 {
+
+	}
+
+	/**
+	 * <h5>Number클래스</h5><br>
+	 * 이 클래스는 추상클래스로 내부적으로 숫자를 멤버변수로 갖는 래퍼 클래스들의 조상이다.<br>
+	 * 기본형 중에서 숫자와 관련된 래퍼 클래스들은 모두 Number클래스의 자손이라는 것을 알 수 있다.<br>
+	 * Number클래스 자손으로 BigInteger와 BigDecimal 등이 있는데, BigInteger는 long으로도 다룰 수 없는 큰 범위의 정수를, BigDecimal은 double로도 다룰 수 없는 큰 범위의 부동 소수점수를 처리하기 위한 것으로 연산자의 역할을 대신하는 다양한 메서드를 제공한다.<br>
+	 * Number클래스의 실제 소스는 아래와 같다. 객체가 가지고 있는 값을 숫자와 관련된 기본형으로 변환하여 반환하는 메서드들을 정의하고 있다.<br>
+	 * <pre><code>
+	 *     public abstract class Number implements java.io.Serializable {
+	 *         public abstract int intValue();
+	 *         public abstract long longValue();
+	 *         public abstract float floatValue();
+	 *         public abstract double doubleValue();
+	 *
+	 *         public byte byteValue() {
+	 *             return (byte)intValue();
+	 *         }
+	 *
+	 *         public short shortValue() {
+	 *             return (shrot)intValue();
+	 *         }
+	 *
+	 *     }
+	 * </code></pre>
+	 */
+	class Memo11 {
+
+	}
+
+	/**
+	 * <h5>문자열을 숫자로 변환하기</h5><br>
+	 */
+	class Memo12 {
 
 	}
 
